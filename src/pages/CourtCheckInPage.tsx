@@ -6,12 +6,19 @@ import NavBar from "../Components/NavBar.tsx";
 type Props = {};
 
 const CourtCheckInPage = (props: Props) => {
-  let { id } = useParams();
   const [court, setCourt] = useState([]);
+  const [coordinates, setCoordinates] = useState<{
+    lat: number;
+    lng: number;
+  } | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  let { id } = useParams();
   const auth = useAuth();
 
   useEffect(() => {
     fetchCourts();
+    getCoordinates();
   }, []);
 
   const fetchCourts = async () => {
@@ -22,6 +29,29 @@ const CourtCheckInPage = (props: Props) => {
     } catch (error) {
       console.error("Error fetching courts:", error);
     }
+  };
+
+  const getCoordinates = () => {
+    if (!navigator.geolocation) {
+      setError("Geolocation is not supported by your browser.");
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        setCoordinates({ lat: latitude, lng: longitude });
+        setError(null); // Clear any previous errors
+      },
+      (err) => {
+        setError(`Error getting location: ${err.message}`);
+      },
+      {
+        enableHighAccuracy: true, // Use high-accuracy mode (GPS)
+        timeout: 10000, // Wait up to 10 seconds
+        maximumAge: 0, // Don't use cached position
+      }
+    );
   };
 
   const handleCheckIn = async (courtID: string) => {
@@ -65,6 +95,18 @@ const CourtCheckInPage = (props: Props) => {
       {court.available && (
         <button onClick={() => handleCheckIn(id)}>Check In</button>
       )}
+
+      <div>
+        <h1>Get User Coordinates</h1>
+        {/* <button onClick={getCoordinates}>Get My Location</button> */}
+        {coordinates ? (
+          <p>
+            Latitude: {coordinates.lat}, Longitude: {coordinates.lng}
+          </p>
+        ) : (
+          error && <p style={{ color: "red" }}>{error}</p>
+        )}
+      </div>
     </div>
   );
 };

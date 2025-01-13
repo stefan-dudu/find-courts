@@ -19,6 +19,8 @@ const CourtsList: React.FC = () => {
     }
   };
 
+  console.log("courts", courts);
+
   return (
     <div>
       <h1>Courts</h1>

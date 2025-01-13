@@ -1,7 +1,6 @@
 import React from "react";
 import { useAuth } from "react-oidc-context";
 import CourtsList from "../CourtsList.tsx";
-import { Link } from "react-router-dom";
 import NavBar from "../Components/NavBar.tsx";
 
 type Props = {};
@@ -28,7 +27,6 @@ const Home = (props: Props) => {
 
       {auth.isAuthenticated && "I AM AUTH"}
       <CourtsList />
-      {/* <Courts /> */}
     </div>
   );
 };
