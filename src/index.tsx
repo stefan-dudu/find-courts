@@ -1,9 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App.tsx';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App.tsx";
 import { AuthProvider } from "react-oidc-context";
-
 const cognitoAuthConfig = {
   authority: process.env.REACT_APP_COGNITO_AUTH_CONFIG_AUTHORTITY,
   client_id: process.env.REACT_APP_COGNITO_AUTH_CONFIG_CLIENT_ID,
@@ -12,8 +11,7 @@ const cognitoAuthConfig = {
   scope: "phone openid email",
 };
 
-
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById("root");
 if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
@@ -22,7 +20,7 @@ if (rootElement) {
         <App />
       </AuthProvider>
     </React.StrictMode>
-  );;
+  );
 } else {
   console.error("Root element not found");
 }
