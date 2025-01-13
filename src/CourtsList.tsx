@@ -6,13 +6,12 @@ const CourtsList: React.FC = () => {
   const auth = useAuth();
 
   useEffect(() => {
-    // Fetch courts when component mounts
     fetchCourts();
   }, []);
 
   const fetchCourts = async () => {
     try {
-      const response = await fetch("https://4vvelb2907.execute-api.eu-central-1.amazonaws.com/v1/courts");
+      const response = await fetch(process.env.REACT_APP_COURT_GET_LINK || '');
       const data = await response.json();
       setCourts(data.body);
     } catch (error) {
@@ -26,21 +25,20 @@ const CourtsList: React.FC = () => {
       return;
     }
 
-    const token = auth.user?.id_token; // Get the ID token from Cognito
+    const token = auth.user?.id_token; 
 
     try {
-      const response = await fetch("https://4vvelb2907.execute-api.eu-central-1.amazonaws.com/v1/checkin", {
-        method: "PUT",
+      const response = await fetch( process.env.REACT_APP_COURT_CHECKIN_LINK || '', {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`
         },
-        body: JSON.stringify({ courtID })
-      });
-
+        body: JSON.stringify({ courtID }),
+      }); 
       if (response.ok) {
         alert("Check-in successful!");
-        fetchCourts(); // Refresh courts list
+        fetchCourts(); 
       } else {
         const errorData = await response.json();
         alert(`Error: ${errorData.message}`);
@@ -50,7 +48,6 @@ const CourtsList: React.FC = () => {
       alert("An error occurred during check-in.");
     }
   };
-  console.log('courts', courts)
 
   return (
     <div>
