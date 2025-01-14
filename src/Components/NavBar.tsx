@@ -7,11 +7,11 @@ const NavBar = (props: Props) => {
   return (
     <div>
       <h1>Welcome to the Court Reservation App</h1>
-      {/* <Link to="/">Home</Link>
+      <Link to="/">Home</Link>
       <br />
       <Link to="/courts/3">Court 3</Link>
       <br />
-      <Link to="/about">About Us</Link> */}
+      <Link to="/about">About Us</Link>
     </div>
   );
 };

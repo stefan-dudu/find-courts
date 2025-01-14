@@ -5,6 +5,7 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Map from "../Components/Map.tsx";
 import BasicMap from "../Components/BasicMap.tsx";
+import "./Home.scss";
 
 type Props = {};
 
@@ -31,16 +32,18 @@ const Home = (props: Props) => {
 
   return (
     <div>
-      <ToggleButtonGroup
-        color="primary"
-        value={view}
-        exclusive
-        onChange={handleChange}
-        aria-label="View Toggle"
-      >
-        <ToggleButton value="courts">Courts</ToggleButton>
-        <ToggleButton value="map">Map</ToggleButton>
-      </ToggleButtonGroup>
+      <div className="toggleButton">
+        <ToggleButtonGroup
+          color="primary"
+          value={view}
+          exclusive
+          onChange={handleChange}
+          aria-label="View Toggle"
+        >
+          <ToggleButton value="courts">Courts</ToggleButton>
+          <ToggleButton value="map">Map</ToggleButton>
+        </ToggleButtonGroup>
+      </div>
 
       <div style={{ marginTop: "20px" }}>
         {view === "courts" ? <CourtsList /> : <BasicMap />}

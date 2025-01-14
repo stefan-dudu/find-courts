@@ -1,17 +1,47 @@
+.statusContainer {
+  margin-bottom: 20px;
+  margin-left: 20px;
+  .row {
+    display: flex;
+    gap: 5px;
+    padding: 5px;
+    align-items: center;
+  }
+}
+
 .itemParent {
   display: flex;
   width: 100%;
-  //   background: green;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+
   .itemContainer {
-    width: auto;
-    // background: pink;
+    width: 40vw;
     padding: 10px;
     margin: 20px;
-    width: 40vw;
-    border: 1px solid lightgreen;
+    border: 3px solid lightgreen;
     border-radius: 12px;
+    text-align: center;
+
+    &.available {
+      background-color: #d4edda; // Light green
+      border-color: #c3e6cb;
+    }
+
+    &.likely-available {
+      background-color: #fff3cd; // Light yellow
+      border-color: #ffeeba;
+    }
+
+    &.taken {
+      background-color: #f8d7da; // Light red
+      border-color: #f5c6cb;
+    }
+
+    &.unknown {
+      background-color: #d1ecf1; // Light blue
+      border-color: #bee5eb;
+    }
   }
 }
