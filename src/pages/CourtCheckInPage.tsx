@@ -56,7 +56,8 @@ const CourtCheckInPage = (props: Props) => {
 
   const handleCheckIn = async (courtID: string) => {
     if (!auth.isAuthenticated) {
-      alert("You must be logged in to check in.");
+      // alert("You must be logged in to check in.");
+      auth.signinRedirect();
       return;
     }
 
