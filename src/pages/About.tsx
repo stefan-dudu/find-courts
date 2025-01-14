@@ -1,15 +1,9 @@
 import React from "react";
-import NavBar from "../Components/NavBar.tsx";
 
 type Props = {};
 
 const About = (props: Props) => {
-  return (
-    <div>
-      <NavBar />
-      About
-    </div>
-  );
+  return <div>About</div>;
 };
 
 export default About;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "react-oidc-context";
+import "./CourtsList.scss";
 
 const CourtsList: React.FC = () => {
   const [courts, setCourts] = useState([]);
@@ -23,17 +24,17 @@ const CourtsList: React.FC = () => {
 
   return (
     <div>
-      <h1>Courts</h1>
-      <ul>
+      {/* <h1>Courts</h1> */}
+      <div className="itemParent">
         {courts.map((court: any) => (
-          <li key={court.courtID}>
+          <div key={court.courtID} className="itemContainer">
             <strong>Court ID:</strong> {court.courtID} <br />
             <strong>Available:</strong> {court.available ? "Yes" : "No"} <br />
-            <strong>Occupied Until:</strong>{" "}
+            {!court.available && <strong>Occupied Until:</strong>}
             {court.occupiedUntil ?? "Not occupied"}
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

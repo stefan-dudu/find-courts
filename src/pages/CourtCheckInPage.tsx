@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "react-oidc-context";
 import { useParams } from "react-router-dom";
-import NavBar from "../Components/NavBar.tsx";
 
 type Props = {};
 
@@ -141,7 +140,6 @@ const CourtCheckInPage = (props: Props) => {
 
   return (
     <div>
-      <NavBar />
       <h2>you are checking in on court {id}</h2>
       {auth.isAuthenticated ? "I AM AUTH" : "NOT AUTH"}
 

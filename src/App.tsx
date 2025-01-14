@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./pages/About.tsx";
 import CourtCheckInPage from "./pages/CourtCheckInPage.tsx";
 import Home from "./pages/Home.tsx";
+import NavBar from "./Components/NavBar.tsx";
 
 function App() {
   const auth = useAuth();
@@ -20,6 +21,7 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/courts/:id" element={<CourtCheckInPage />} />
