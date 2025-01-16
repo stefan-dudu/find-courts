@@ -1,15 +1,48 @@
-import React from "react";
-import Map, { Marker } from "react-map-gl";
+import React, { useState, useEffect, useRef } from "react";
+import Map, { Marker, Popup } from "react-map-gl";
+import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN; // Replace with your token
 
 const BasicMap = () => {
+  const [courts, setCourts] = useState([]);
+
+  useEffect(() => {
+    fetchCourts();
+  }, []);
+
+  const fetchCourts = async () => {
+    try {
+      const response = await fetch(process.env.REACT_APP_COURT_GET_LINK || "");
+      const data = await response.json();
+      setCourts(data.body);
+    } catch (error) {
+      console.error("Error fetching courts:", error);
+    }
+  };
+
+  const MarkerComponent = () => {
+    return (
+      <>
+        {courts.map((el: any) => {
+          return (
+            <Marker
+              longitude={el.coordinates[1]}
+              latitude={el.coordinates[0]}
+            ></Marker>
+          );
+        })}
+      </>
+    );
+  };
+
+  console.log("courts", courts);
   return (
     <div style={{ height: "500px", width: "100%" }}>
       <Map
         initialViewState={{
-          longitude: 26.03131711559266, // Example coordinates (replace with yours)
+          longitude: 26.03131711559266,
           latitude: 44.436216112648516,
           zoom: 12,
         }}
@@ -18,16 +51,7 @@ const BasicMap = () => {
         // mapStyle="mapbox://styles/stefan01-dev/cle6x947u005b01nojysmi80b"
         mapboxAccessToken={MAPBOX_TOKEN}
       >
-        <Marker
-          longitude={26.029718027493107}
-          latitude={44.42155063043167}
-          color="green"
-        />
-        <Marker
-          longitude={26.04280437854174}
-          latitude={44.461066648146485}
-          color="green"
-        />
+        <MarkerComponent />
       </Map>
     </div>
   );

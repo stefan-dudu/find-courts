@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "react-oidc-context";
 import { useParams } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 type Props = {};
 
@@ -140,26 +141,23 @@ const CourtCheckInPage = (props: Props) => {
 
   return (
     <div>
-      <h2>you are checking in on court {id}</h2>
-      {auth.isAuthenticated ? "I AM AUTH" : "NOT AUTH"}
+      <h2>You are about to check in on court {id}</h2>
 
       <div>
-        <h1>Get User Coordinates</h1>
-        {/* {coordinates ? (
-          <p>
-            Latitude: {coordinates.lat}, Longitude: {coordinates.lng}
-          </p>
-        ) : (
-          error && <p style={{ color: "red" }}>{error}</p>
-        )} */}
-
         <div>
           {isWithinRadius(userLat, userLon, courtLat, courtLon, radius) ? (
             court.available && (
-              <button onClick={() => handleCheckIn(id)}>Check In</button>
+              // <button onClick={() => handleCheckIn(id)}>Check In</button>
+              <Button
+                variant="contained"
+                color="success"
+                onClick={() => handleCheckIn(id)}
+              >
+                Check in
+              </Button>
             )
           ) : (
-            <h2>get closer</h2>
+            <h2>Please get closer to the tennis field - within 50m</h2>
           )}
         </div>
       </div>

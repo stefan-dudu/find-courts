@@ -3,7 +3,7 @@ import { useAuth } from "react-oidc-context";
 import CourtsList from "../Components/CourtsList.tsx";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import Map from "../Components/Map.tsx";
+import Button from "@mui/material/Button";
 import BasicMap from "../Components/BasicMap.tsx";
 import "./Home.scss";
 
@@ -32,6 +32,13 @@ const Home = (props: Props) => {
 
   return (
     <div>
+      <div>
+        <h1>Know which public tennis courts are available right now </h1>
+
+        <Button variant="contained" color="success">
+          How does it work?
+        </Button>
+      </div>
       <div className="toggleButton">
         <ToggleButtonGroup
           color="primary"

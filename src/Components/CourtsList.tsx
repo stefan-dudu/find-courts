@@ -21,10 +21,6 @@ const CourtsList: React.FC = () => {
   };
 
   const getCourtStatusClass = (court: any) => {
-    if (court.available) {
-      return "available"; // If court is marked as available, it's available
-    }
-
     const occupiedUntil = new Date(court.occupiedUntil);
     const currentTime = new Date();
     currentTime.setHours(currentTime.getHours()); // Adjust for +2 hours
@@ -34,10 +30,18 @@ const CourtsList: React.FC = () => {
 
     // console.log("occupiedUntil", occupiedUntil);
     // console.log("currentTime", currentTime);
+    // console.log(
+    //   "timeDiffInHours >= 1 && timeDiffInHours <= 2",
+    //   timeDiffInHours >= 1
+    // );
 
-    if (timeDiffInHours > 2) {
+    // if (court.available && timeDiffInHours >= 2) {
+    //   return "available"; // If court is marked as available, it's available
+    // }
+
+    if (court.available && timeDiffInHours >= 2) {
       return "available";
-    } else if (timeDiffInHours >= 1 && timeDiffInHours <= 2) {
+    } else if (timeDiffInHours >= 0.1 && timeDiffInHours <= 2) {
       return "likely-available";
     } else {
       return "taken";
