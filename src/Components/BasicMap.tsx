@@ -26,9 +26,9 @@ const BasicMap = () => {
     <div style={{ height: "500px", width: "100%" }}>
       <Map
         initialViewState={{
-          longitude: 26.03131711559266,
-          latitude: 44.436216112648516,
-          zoom: 12,
+          longitude: 26.10249131839039,
+          latitude: 44.42677583105836,
+          zoom: 11.1,
         }}
         // style={{ width: "100%", height: "100%" }}
         style={{
@@ -39,7 +39,7 @@ const BasicMap = () => {
         mapStyle="mapbox://styles/mapbox/outdoors-v12"
         mapboxAccessToken={MAPBOX_TOKEN}
       >
-        {courts &&
+        {courts.length > 0 &&
           courts.map((court) => (
             <Marker
               key={court.courtID}
@@ -69,9 +69,6 @@ const BasicMap = () => {
                 Surface: Hard
                 <br />
                 Lights: Yes
-                {/* <br />
-                Occupied Until:{" "}
-                {new Date(popupInfo.occupiedUntil).toLocaleString()} */}
               </p>
             </div>
           </Popup>

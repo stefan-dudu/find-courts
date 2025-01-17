@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "react-oidc-context";
+import Link from "@mui/material/Link";
+
 import "./CourtsList.scss";
 
 const CourtsList: React.FC = () => {
@@ -52,19 +54,19 @@ const CourtsList: React.FC = () => {
     width: "20px", // Set the width of the dot
     height: "20px", // Set the height of the dot
     borderRadius: "50%", // Make it a circle
-    backgroundColor: "green", // Set the color of the dot
+    backgroundColor: "lightgreen", // Set the color of the dot
   };
   const dotStyle2 = {
     width: "20px", // Set the width of the dot
     height: "20px", // Set the height of the dot
     borderRadius: "50%", // Make it a circle
-    backgroundColor: "yellow", // Set the color of the dot
+    backgroundColor: "#ffeeba", // Set the color of the dot
   };
   const dotStyle3 = {
     width: "20px", // Set the width of the dot
     height: "20px", // Set the height of the dot
     borderRadius: "50%", // Make it a circle
-    backgroundColor: "red", // Set the color of the dot
+    backgroundColor: "#f5c6cb", // Set the color of the dot
   };
 
   return (
@@ -94,8 +96,20 @@ const CourtsList: React.FC = () => {
             key={court.courtID}
             className={`itemContainer ${getCourtStatusClass(court)}`}
           >
+            <div className="name">{court.name}</div>
+            {/* <div className="address">{court.address}</div> */}
+            <div>
+              <Link
+                href={`${court.googleMapsLink}`}
+                target="_blank"
+                rel="noopener"
+              >
+                <a>{court.address}</a>
+              </Link>
+            </div>
             <strong>Court ID:</strong> {court.courtID} <br />
-            {"Adress: 1500 Alameda Drive"}
+            <div className="surface">Surface: {court.surface}</div>
+            <div className="lights">Lights: {court.lights ? "Yes" : "No"}</div>
             {/* {!court.available && <strong>Occupied Until:</strong>}
             {court.occupiedUntil ?? "Not occupied"} */}
           </div>
