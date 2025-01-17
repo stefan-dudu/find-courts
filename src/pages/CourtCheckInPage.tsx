@@ -25,7 +25,14 @@ const CourtCheckInPage = (props: Props) => {
     try {
       const response = await fetch(process.env.REACT_APP_COURT_GET_LINK || "");
       const data = await response.json();
-      setCourt(data.body.filter((el) => el.courtID == id)[0]);
+
+      const filteredCourt = data.body
+        .map((location) => ({
+          ...location,
+          courts: location.courts.filter((court) => court.courtID === id),
+        }))
+        .filter((el) => el.courts.length > 0);
+      setCourt(filteredCourt[0].courts[0]);
     } catch (error) {
       console.error("Error fetching courts:", error);
     }
@@ -137,24 +144,25 @@ const CourtCheckInPage = (props: Props) => {
     console.log("User is not within 50 meters of the court");
   }
 
-  console.log("coordinates?.lat", coordinates?.lat);
-
   return (
     <div>
-      <h2>You are about to check in on court {id}</h2>
-
       <div>
         <div>
           {isWithinRadius(userLat, userLon, courtLat, courtLon, radius) ? (
-            court.available && (
-              // <button onClick={() => handleCheckIn(id)}>Check In</button>
-              <Button
-                variant="contained"
-                color="success"
-                onClick={() => handleCheckIn(id)}
-              >
-                Check in
-              </Button>
+            court.available ? (
+              <div>
+                <h2>You are about to check in on court {id}</h2>
+
+                <Button
+                  variant="contained"
+                  color="success"
+                  onClick={() => handleCheckIn(id)}
+                >
+                  Check in
+                </Button>
+              </div>
+            ) : (
+              <h2>Sorry, court already taken</h2>
             )
           ) : (
             <h2>Please get closer to the tennis field - within 50m</h2>

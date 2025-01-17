@@ -1,47 +1,73 @@
-.statusContainer {
-  margin-bottom: 20px;
-  margin-left: 5rem;
-  .row {
-    display: flex;
-    gap: 5px;
-    padding: 5px;
-    align-items: center;
-  }
-}
-
-.itemParent {
+.parentWrapper {
   display: flex;
   width: 100%;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-
-  .itemContainer {
-    width: 40vw;
+  .locationContainer {
+    width: auto;
     padding: 10px;
     margin: 20px;
     border: 3px solid lightgreen;
     border-radius: 12px;
     text-align: center;
-
-    &.available {
-      background-color: #d4edda; // Light green
-      border-color: #c3e6cb;
-    }
-
-    &.likely-available {
-      background-color: #fff3cd; // Light yellow
-      border-color: #ffeeba;
-    }
-
-    &.taken {
-      background-color: #f8d7da; // Light red
-      border-color: #f5c6cb;
-    }
-
-    &.unknown {
-      background-color: #d1ecf1; // Light blue
-      border-color: #bee5eb;
-    }
   }
+}
+.locationHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  .showCourtsButton {
+  }
+}
+
+.courtStatusSummary {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.availableCount {
+  color: green;
+  font-weight: bold;
+}
+
+.likelyAvailableCount {
+  color: orange;
+  font-weight: bold;
+}
+
+.takenCount {
+  color: rgb(209, 55, 81);
+  font-weight: bold;
+}
+
+.courtsParent {
+  margin-top: 15px;
+
+  .courtDetails {
+    border: 2px solid green;
+    margin: 5px;
+  }
+}
+
+.courtItem {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.courtItem.available {
+  background-color: lightgreen;
+}
+
+.courtItem.likely-available {
+  background-color: #ffeeba;
+}
+
+.courtItem.taken {
+  background-color: #f5c6cb;
 }
