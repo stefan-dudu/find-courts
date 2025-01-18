@@ -29,15 +29,18 @@ const CourtsList: React.FC = () => {
   };
 
   const getCourtStatusClass = (court: any) => {
-    const occupiedUntil = new Date(court.occupiedUntil);
+    const occupiedUntil2 = new Date(court.occupiedUntil);
+
+    const occupiedSince = new Date(occupiedUntil2);
+    occupiedSince.setHours(occupiedSince.getHours() - 1);
     const currentTime = new Date();
 
     const timeDiffInHours =
-      (currentTime.getTime() - occupiedUntil.getTime()) / 3600000;
+      (currentTime.getTime() - occupiedSince.getTime()) / 3600000;
 
     if (court.available && timeDiffInHours >= 2) {
       return "available";
-    } else if (timeDiffInHours >= 0.1 && timeDiffInHours <= 2) {
+    } else if (timeDiffInHours >= 1 && timeDiffInHours <= 2) {
       return "likely-available";
     } else {
       return "taken";
@@ -53,7 +56,7 @@ const CourtsList: React.FC = () => {
               court.available &&
               (new Date().getTime() - new Date(court.occupiedUntil).getTime()) /
                 3600000 >
-                2
+                1
           ).length;
 
           const allFieldsAvailable = location.courts.length === availableCourts;
@@ -66,7 +69,11 @@ const CourtsList: React.FC = () => {
                 0.1 &&
               (new Date().getTime() - new Date(court.occupiedUntil).getTime()) /
                 3600000 <
-                2
+                1
+          ).length;
+
+          const takenCourts = location.courts.filter(
+            (court: any) => !court.available
           ).length;
 
           return (
@@ -84,17 +91,24 @@ const CourtsList: React.FC = () => {
                     </Link>
                   </div>
                   <div className="courtStatusSummary">
-                    <span
-                      className={`${
-                        availableCourts === 0 ? "takenCount" : "availableCount"
-                      }`}
-                    >
-                      {availableCourts} Available
-                    </span>
+                    {!!availableCourts && (
+                      <span
+                        className={`${
+                          availableCourts === 0
+                            ? "takenCount"
+                            : "availableCount"
+                        }`}
+                      >
+                        {availableCourts} Available
+                      </span>
+                    )}
                     {!!likelyAvailableCourts && (
                       <span className="likelyAvailableCount">
                         {likelyAvailableCourts} Likely Available
                       </span>
+                    )}
+                    {!!takenCourts && (
+                      <span className="takenCount">{takenCourts} Taken</span>
                     )}
                   </div>
                   {!allFieldsAvailable && (
@@ -111,20 +125,45 @@ const CourtsList: React.FC = () => {
                 </div>
                 {expandedLocation === location.locationID && (
                   <div className="courtsParent">
-                    {location.courts.map((court: any) => (
-                      <div
-                        key={court.courtID}
-                        className={`courtItem ${getCourtStatusClass(court)}`}
-                      >
-                        <div className="courtDetails">
-                          <h4>{court.name}</h4>
-                          <h3>ID: {court.courtID}</h3>
-                          <h3>
-                            {court.available ? "Available" : "NOT Available"}
-                          </h3>
+                    {location.courts.map((court: any) => {
+                      const statusClass = getCourtStatusClass(court);
+
+                      const occupiedUntil = new Date(court.occupiedUntil);
+
+                      const occupiedSince = new Date(occupiedUntil);
+                      occupiedSince.setHours(occupiedSince.getHours() - 1);
+
+                      const timeSinceOccupied = Math.round(
+                        (new Date().getTime() - occupiedSince.getTime()) / 60000 // in minutes
+                      );
+
+                      return (
+                        <div
+                          key={court.courtID}
+                          className={`courtItem ${statusClass}`}
+                        >
+                          <div className="courtDetails">
+                            <h4>{court.name}</h4>
+                            <h3>ID: {court.courtID}</h3>
+                            <h3>
+                              {court.available ? "Available" : "Not Available"}
+                            </h3>
+                            {statusClass === "likely-available" && (
+                              <p>
+                                Last taken {timeSinceOccupied} minutes ago,
+                                might be available.
+                              </p>
+                            )}
+                            {statusClass === "taken" && (
+                              <p>
+                                Currently occupied, taken {timeSinceOccupied}{" "}
+                                minutes ago.
+                              </p>
+                            )}
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 )}
               </div>

@@ -152,7 +152,6 @@ const CourtCheckInPage = (props: Props) => {
             court.available ? (
               <div>
                 <h2>You are about to check in on court {id}</h2>
-
                 <Button
                   variant="contained"
                   color="success"
