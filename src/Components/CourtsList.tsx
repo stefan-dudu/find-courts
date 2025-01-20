@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "react-oidc-context";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
+import CircularProgress from "@mui/material/CircularProgress";
+import Button from "@mui/material/Button";
 
 import "./CourtsList.scss";
 
 const CourtsList: React.FC = () => {
   const [locations, setLocations] = useState([]);
   const [expandedLocation, setExpandedLocation] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
   const auth = useAuth();
 
   useEffect(() => {
@@ -21,6 +24,8 @@ const CourtsList: React.FC = () => {
       setLocations(data.body);
     } catch (error) {
       console.error("Error fetching courts:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -46,6 +51,23 @@ const CourtsList: React.FC = () => {
       return "taken";
     }
   };
+
+  if (loading) {
+    return (
+      <div style={{ textAlign: "center", marginTop: "20px" }}>
+        <CircularProgress />
+        <p>Loading court information...</p>
+      </div>
+    );
+  }
+
+  // if (error) {
+  //   return (
+  //     <div style={{ textAlign: "center", marginTop: "20px", color: "red" }}>
+  //       <p>{error}</p>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="parentWrapper">
@@ -81,7 +103,7 @@ const CourtsList: React.FC = () => {
               <div className="locationContainer">
                 <div className="locationHeader">
                   <div>
-                    <h3>{location.address}</h3>
+                    <h3>{location.courtName}</h3>
                     <Link
                       href={`${location.googleMapsLink}`}
                       target="_blank"
@@ -112,15 +134,25 @@ const CourtsList: React.FC = () => {
                     )}
                   </div>
                   {!allFieldsAvailable && (
-                    <button
-                      className="showCourtsButton"
+                    // <button
+                    //   className="showCourtsButton"
+                    //   onClick={() => toggleLocation(location.locationID)}
+                    // >
+                    //   {expandedLocation === location.locationID
+                    //     ? "Hide"
+                    //     : "Show"}{" "}
+                    //   Courts
+                    // </button>
+                    <Button
+                      variant="outlined"
+                      color="success"
                       onClick={() => toggleLocation(location.locationID)}
                     >
                       {expandedLocation === location.locationID
                         ? "Hide"
                         : "Show"}{" "}
                       Courts
-                    </button>
+                    </Button>
                   )}
                 </div>
                 {expandedLocation === location.locationID && (

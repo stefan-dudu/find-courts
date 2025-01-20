@@ -6,6 +6,7 @@ import About from "./pages/About.tsx";
 import CourtCheckInPage from "./pages/CourtCheckInPage.tsx";
 import Home from "./pages/Home.tsx";
 import NavBar from "./Components/NavBar.tsx";
+import HowItWorks from "./pages/HowItWorks.tsx";
 
 function App() {
   const auth = useAuth();
@@ -26,6 +27,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/courts/:id" element={<CourtCheckInPage />} />
           <Route path="/about" element={<About />} />
+          <Route path="/instructiuni" element={<HowItWorks />} />
         </Routes>
       </Router>
     </div>

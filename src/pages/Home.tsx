@@ -1,16 +1,20 @@
 import React from "react";
 import { useAuth } from "react-oidc-context";
+import { useNavigate } from "react-router-dom";
 import CourtsList from "../Components/CourtsList.tsx";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Button from "@mui/material/Button";
 import BasicMap from "../Components/BasicMap.tsx";
 import "./Home.scss";
+import ball from "../assets/ball.png";
+import racket from "../assets/racket.png";
 
 type Props = {};
 
 const Home = (props: Props) => {
   const auth = useAuth();
+  const navigate = useNavigate(); // Initialize navigate
   const [view, setView] = React.useState("courts");
 
   if (auth.isLoading) {
@@ -32,16 +36,23 @@ const Home = (props: Props) => {
 
   return (
     <div>
-      <div>
+      <div className="heroSection">
         <h1>Know which public tennis courts are available right now </h1>
-
-        <Button variant="contained" color="success">
+        <img src={ball} className="ball" />
+        {/* <img src={racket} className="racket" /> */}
+        <Button
+          variant="contained"
+          color="success"
+          onClick={() => {
+            navigate("/instructiuni");
+          }}
+        >
           How does it work?
         </Button>
       </div>
       <div className="toggleButton">
         <ToggleButtonGroup
-          color="primary"
+          color="success"
           value={view}
           exclusive
           onChange={handleChange}

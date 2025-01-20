@@ -6,9 +6,11 @@
   justify-content: center;
   .locationContainer {
     width: auto;
-    padding: 10px;
+    padding: 20px;
     margin: 20px;
-    border: 3px solid lightgreen;
+    box-shadow: 10px 20px 55px 0 #5c5c5c4d;
+    // box-shadow: 9px 13px 62px 0 rgb(175 87 9 / 47%);
+    // box-shadow: 37px 37px 62px 0 rgb(22 151 5 / 13%);
     border-radius: 12px;
     text-align: center;
   }

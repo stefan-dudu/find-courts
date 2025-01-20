@@ -1,40 +1,56 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "react-oidc-context";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
+import CircularProgress from "@mui/material/CircularProgress";
+import { Alert, Snackbar } from "@mui/material";
 
 type Props = {};
 
 const CourtCheckInPage = (props: Props) => {
-  const [court, setCourt] = useState([]);
+  const [court, setCourt] = useState<any>(null);
   const [coordinates, setCoordinates] = useState<{
     lat: number;
     lng: number;
   } | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-
-  let { id } = useParams();
+  const [alertMessage, setAlertMessage] = useState<string | null>(null);
+  const [alertSeverity, setAlertSeverity] = useState<"success" | "error">(
+    "success"
+  );
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [checkedIn, setCheckedIn] = useState(false); // Track check-in status
+  const navigate = useNavigate();
   const auth = useAuth();
+  let { id } = useParams();
 
   useEffect(() => {
     fetchCourts();
     getCoordinates();
   }, []);
 
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
+  };
+
   const fetchCourts = async () => {
+    setLoading(true);
     try {
       const response = await fetch(process.env.REACT_APP_COURT_GET_LINK || "");
       const data = await response.json();
 
       const filteredCourt = data.body
-        .map((location) => ({
+        .map((location: any) => ({
           ...location,
-          courts: location.courts.filter((court) => court.courtID === id),
+          courts: location.courts.filter((court: any) => court.courtID === id),
         }))
-        .filter((el) => el.courts.length > 0);
-      setCourt(filteredCourt[0].courts[0]);
+        .filter((el: any) => el.courts.length > 0);
+      setCourt(filteredCourt[0]?.courts[0] || null);
     } catch (error) {
       console.error("Error fetching courts:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -48,22 +64,21 @@ const CourtCheckInPage = (props: Props) => {
       (position) => {
         const { latitude, longitude } = position.coords;
         setCoordinates({ lat: latitude, lng: longitude });
-        setError(null); // Clear any previous errors
+        setError(null);
       },
       (err) => {
         setError(`Error getting location: ${err.message}`);
       },
       {
-        enableHighAccuracy: true, // Use high-accuracy mode (GPS)
-        timeout: 10000, // Wait up to 10 seconds
-        maximumAge: 0, // Don't use cached position
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0,
       }
     );
   };
 
   const handleCheckIn = async (courtID: string) => {
     if (!auth.isAuthenticated) {
-      // alert("You must be logged in to check in.");
       auth.signinRedirect();
       return;
     }
@@ -82,41 +97,29 @@ const CourtCheckInPage = (props: Props) => {
           body: JSON.stringify({ courtID }),
         }
       );
+
       if (response.ok) {
-        alert("Check-in successful!");
-        fetchCourts();
+        setAlertMessage("Check-in successful!");
+        setAlertSeverity("success");
+        setOpenSnackbar(true);
+
+        // Mark the court as checked in
+        setCheckedIn(true);
+
+        // Redirect to home after a delay
+        setTimeout(() => navigate("/"), 3000);
       } else {
         const errorData = await response.json();
-        alert(`Error: ${errorData.message}`);
+        setAlertMessage(`Error: ${errorData.message}`);
+        setAlertSeverity("error");
+        setOpenSnackbar(true);
       }
     } catch (error) {
       console.error("Error checking in:", error);
-      alert("An error occurred during check-in.");
+      setAlertMessage("An error occurred during check-in.");
+      setAlertSeverity("error");
+      setOpenSnackbar(true);
     }
-  };
-
-  const EARTH_RADIUS = 6371000; // Earth's radius in meters
-
-  const haversineDistance = (
-    lat1: number,
-    lon1: number,
-    lat2: number,
-    lon2: number
-  ) => {
-    const toRadians = (deg: number) => (deg * Math.PI) / 180;
-
-    const dLat = toRadians(lat2 - lat1);
-    const dLon = toRadians(lon2 - lon1);
-    const radLat1 = toRadians(lat1);
-    const radLat2 = toRadians(lat2);
-
-    const a =
-      Math.sin(dLat / 2) ** 2 +
-      Math.cos(radLat1) * Math.cos(radLat2) * Math.sin(dLon / 2) ** 2;
-
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-    return EARTH_RADIUS * c; // Distance in meters
   };
 
   const isWithinRadius = (
@@ -126,48 +129,82 @@ const CourtCheckInPage = (props: Props) => {
     courtLon: number,
     radius: number
   ) => {
-    const distance = haversineDistance(userLat, userLon, courtLat, courtLon);
-    return distance <= radius;
+    const haversineDistance = (
+      lat1: number,
+      lon1: number,
+      lat2: number,
+      lon2: number
+    ) => {
+      const toRadians = (deg: number) => (deg * Math.PI) / 180;
+      const dLat = toRadians(lat2 - lat1);
+      const dLon = toRadians(lon2 - lon1);
+      const a =
+        Math.sin(dLat / 2) ** 2 +
+        Math.cos(toRadians(lat1)) *
+          Math.cos(toRadians(lat2)) *
+          Math.sin(dLon / 2) ** 2;
+
+      return 2 * 6371000 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    };
+
+    return haversineDistance(userLat, userLon, courtLat, courtLon) <= radius;
   };
 
-  // Example usage
-  const userLat = coordinates?.lat || 44.426988;
-  const userLon = coordinates?.lng || 26.015445;
-  const courtLat = 44.427225; // close
-  // const courtLat = 44.426382; // far
-  const courtLon = 26.015756;
-  const radius = 50; // 50 meters
-
-  if (isWithinRadius(userLat, userLon, courtLat, courtLon, radius)) {
-    console.log("User is within 50 meters of the court");
-  } else {
-    console.log("User is not within 50 meters of the court");
+  if (loading) {
+    return (
+      <div style={{ textAlign: "center", marginTop: "20px" }}>
+        <CircularProgress />
+        <p>Loading court information...</p>
+      </div>
+    );
   }
 
   return (
     <div>
-      <div>
-        <div>
-          {isWithinRadius(userLat, userLon, courtLat, courtLon, radius) ? (
-            court.available ? (
-              <div>
-                <h2>You are about to check in on court {id}</h2>
-                <Button
-                  variant="contained"
-                  color="success"
-                  onClick={() => handleCheckIn(id)}
-                >
-                  Check in
-                </Button>
-              </div>
-            ) : (
-              <h2>Sorry, court already taken</h2>
-            )
+      {!checkedIn ? (
+        isWithinRadius(
+          coordinates?.lat || 0,
+          coordinates?.lng || 0,
+          court?.lat || 0,
+          court?.lon || 0,
+          50
+        ) ? (
+          court?.available ? (
+            <div>
+              <h2>You are about to check in on court {id}</h2>
+              <Button
+                variant="contained"
+                color="success"
+                onClick={() => handleCheckIn(id!)}
+              >
+                Check in
+              </Button>
+            </div>
           ) : (
-            <h2>Please get closer to the tennis field - within 50m</h2>
-          )}
-        </div>
-      </div>
+            <h2>Sorry, court already taken</h2>
+          )
+        ) : (
+          <h2>Please get closer to the tennis field - within 50m</h2>
+        )
+      ) : (
+        <h2>Thank you for checking in! Redirecting to home...</h2>
+      )}
+
+      {/* Snackbar for Alerts */}
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity={alertSeverity}
+          sx={{ width: "100%" }}
+        >
+          {alertMessage}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };
