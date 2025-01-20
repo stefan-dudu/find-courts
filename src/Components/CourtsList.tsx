@@ -175,11 +175,14 @@ const CourtsList: React.FC = () => {
                           className={`courtItem ${statusClass}`}
                         >
                           <div className="courtDetails">
-                            <h4>{court.name}</h4>
-                            <h3>ID: {court.courtID}</h3>
-                            <h3>
+                            {/* <h4>{court.name}</h4> */}
+                            <h4>
+                              #{court.courtID} -{" "}
                               {court.available ? "Available" : "Not Available"}
-                            </h3>
+                            </h4>
+                            {/* <h3>
+                              {court.available ? "Available" : "Not Available"}
+                            </h3> */}
                             {statusClass === "likely-available" && (
                               <p>
                                 Last taken {timeSinceOccupied} minutes ago,

@@ -50,26 +50,26 @@
   margin-top: 15px;
 
   .courtDetails {
-    border: 2px solid green;
+    // border: 2px solid green;
     margin: 5px;
   }
 }
 
 .courtItem {
   padding: 10px;
-  border: 1px solid #ccc;
+  // border: 1px solid #ccc;
   border-radius: 5px;
   margin-bottom: 10px;
 }
 
 .courtItem.available {
-  background-color: lightgreen;
+  background-color: rgba(153, 250, 153, 0.507);
 }
 
 .courtItem.likely-available {
-  background-color: #ffeeba;
+  background-color: rgb(227 178 72 / 51%);
 }
 
 .courtItem.taken {
-  background-color: #f5c6cb;
+  background-color: rgb(241 137 137 / 51%);
 }
