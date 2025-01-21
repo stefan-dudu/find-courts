@@ -70,9 +70,11 @@ const NavBar = (props: Props) => {
             <Avatar sx={{ bgcolor: green[500] }}>{firstLetter}</Avatar>
           </div>
         ) : (
-          <Button onClick={handleLogin} variant="outlined" color="success">
-            Login
-          </Button>
+          // TODO: disabled for the moment, until full implementation - cognito & ULR - localhost to domain
+          // <Button onClick={handleLogin} variant="outlined" color="success">
+          //   Login
+          // </Button>
+          <></>
         )}
       </div>
     </div>
