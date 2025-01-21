@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Alert, Snackbar } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 type Props = {};
 
@@ -24,6 +25,7 @@ const CourtCheckInPage = (props: Props) => {
   const navigate = useNavigate();
   const auth = useAuth();
   let { id } = useParams();
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetchCourts();
@@ -56,7 +58,7 @@ const CourtCheckInPage = (props: Props) => {
 
   const getCoordinates = () => {
     if (!navigator.geolocation) {
-      setError("Geolocation is not supported by your browser.");
+      setError(`${t("checkInPage.locationError")}`);
       return;
     }
 
@@ -67,7 +69,7 @@ const CourtCheckInPage = (props: Props) => {
         setError(null);
       },
       (err) => {
-        setError(`Error getting location: ${err.message}`);
+        setError(`${t("checkInPage.errorGettingLocation")} ${err.message}`);
       },
       {
         enableHighAccuracy: true,
@@ -99,7 +101,7 @@ const CourtCheckInPage = (props: Props) => {
       );
 
       if (response.ok) {
-        setAlertMessage("Check-in successful!");
+        setAlertMessage(`${t("checkInPage.success")}`);
         setAlertSeverity("success");
         setOpenSnackbar(true);
 
@@ -116,7 +118,7 @@ const CourtCheckInPage = (props: Props) => {
       }
     } catch (error) {
       console.error("Error checking in:", error);
-      setAlertMessage("An error occurred during check-in.");
+      setAlertMessage(`${t("checkInPage.error")}`);
       setAlertSeverity("error");
       setOpenSnackbar(true);
     }
@@ -154,7 +156,7 @@ const CourtCheckInPage = (props: Props) => {
     return (
       <div style={{ textAlign: "center", marginTop: "20px" }}>
         <CircularProgress />
-        <p>Loading court information...</p>
+        <p>{t("loading.courtInfo")}</p>
       </div>
     );
   }
@@ -171,7 +173,9 @@ const CourtCheckInPage = (props: Props) => {
         ) ? (
           court?.available ? (
             <div>
-              <h2>You are about to check in on court {id}</h2>
+              <h2>
+                {t("checkInPage.informCourtNo")} {id}
+              </h2>
               <Button
                 variant="contained"
                 color="success"
@@ -181,16 +185,15 @@ const CourtCheckInPage = (props: Props) => {
               </Button>
             </div>
           ) : (
-            <h2>Sorry, court already taken</h2>
+            <h2>{t("checkInPage.courtTaken")}</h2>
           )
         ) : (
-          <h2>Please get closer to the tennis field - within 50m</h2>
+          <h2>{t("checkInPage.distanceError")}</h2>
         )
       ) : (
-        <h2>Thank you for checking in! Redirecting to home...</h2>
+        <h2>{t("checkInPage.confirmationAndRedirect")}</h2>
       )}
 
-      {/* Snackbar for Alerts */}
       <Snackbar
         open={openSnackbar}
         autoHideDuration={6000}

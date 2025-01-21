@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Map, { Marker, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import CircularProgress from "@mui/material/CircularProgress";
+import { useTranslation } from "react-i18next";
 
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN; // Replace with your token
 
@@ -9,6 +10,7 @@ const BasicMap = () => {
   const [courts, setCourts] = useState([]);
   const [popupInfo, setPopupInfo] = useState(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetchCourts();
@@ -30,18 +32,10 @@ const BasicMap = () => {
     return (
       <div style={{ textAlign: "center", marginTop: "20px" }}>
         <CircularProgress />
-        <p>Loading map information...</p>
+        <p>{t("loading.mapInfo")}</p>
       </div>
     );
   }
-
-  // if (error) {
-  //   return (
-  //     <div style={{ textAlign: "center", marginTop: "20px", color: "red" }}>
-  //       <p>{error}</p>
-  //     </div>
-  //   );
-  // }
 
   return (
     <div style={{ height: "500px", width: "100%" }}>
@@ -87,7 +81,9 @@ const BasicMap = () => {
           >
             <div>
               <h4>{popupInfo.courtName}</h4>
-              <p>No of courts: {popupInfo.courts.length}</p>
+              <p>
+                {t("map.noOfCourts")} {popupInfo.courts.length}
+              </p>
             </div>
           </Popup>
         )}

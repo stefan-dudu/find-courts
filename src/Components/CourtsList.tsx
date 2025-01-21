@@ -4,6 +4,7 @@ import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import CircularProgress from "@mui/material/CircularProgress";
 import Button from "@mui/material/Button";
+import { useTranslation } from "react-i18next";
 
 import "./CourtsList.scss";
 
@@ -12,6 +13,7 @@ const CourtsList: React.FC = () => {
   const [expandedLocation, setExpandedLocation] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const auth = useAuth();
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetchCourts();
@@ -56,18 +58,10 @@ const CourtsList: React.FC = () => {
     return (
       <div style={{ textAlign: "center", marginTop: "20px" }}>
         <CircularProgress />
-        <p>Loading court information...</p>
+        <p>{t("loading.courtInfo")}</p>
       </div>
     );
   }
-
-  // if (error) {
-  //   return (
-  //     <div style={{ textAlign: "center", marginTop: "20px", color: "red" }}>
-  //       <p>{error}</p>
-  //     </div>
-  //   );
-  // }
 
   return (
     <div className="parentWrapper">
@@ -109,7 +103,7 @@ const CourtsList: React.FC = () => {
                       target="_blank"
                       rel="noopener"
                     >
-                      View on Google Maps
+                      {t("courtsList.viewOnMaps")}
                     </Link>
                   </div>
                   <div className="courtStatusSummary">
@@ -121,37 +115,30 @@ const CourtsList: React.FC = () => {
                             : "availableCount"
                         }`}
                       >
-                        {availableCourts} Available
+                        {availableCourts} {t("courtsList.available")}
                       </span>
                     )}
                     {!!likelyAvailableCourts && (
                       <span className="likelyAvailableCount">
-                        {likelyAvailableCourts} Likely Available
+                        {likelyAvailableCourts}{" "}
+                        {t("courtsList.likelyAvailable")}
                       </span>
                     )}
                     {!!takenCourts && (
-                      <span className="takenCount">{takenCourts} Taken</span>
+                      <span className="takenCount">
+                        {takenCourts} {t("courtsList.taken")}
+                      </span>
                     )}
                   </div>
                   {!allFieldsAvailable && (
-                    // <button
-                    //   className="showCourtsButton"
-                    //   onClick={() => toggleLocation(location.locationID)}
-                    // >
-                    //   {expandedLocation === location.locationID
-                    //     ? "Hide"
-                    //     : "Show"}{" "}
-                    //   Courts
-                    // </button>
                     <Button
                       variant="outlined"
                       color="success"
                       onClick={() => toggleLocation(location.locationID)}
                     >
                       {expandedLocation === location.locationID
-                        ? "Hide"
-                        : "Show"}{" "}
-                      Courts
+                        ? `${t("courtsList.hideCourts")}`
+                        : `${t("courtsList.showCourts")}`}
                     </Button>
                   )}
                 </div>
@@ -175,24 +162,24 @@ const CourtsList: React.FC = () => {
                           className={`courtItem ${statusClass}`}
                         >
                           <div className="courtDetails">
-                            {/* <h4>{court.name}</h4> */}
                             <h4>
                               #{court.courtID} -{" "}
-                              {court.available ? "Available" : "Not Available"}
+                              {court.available
+                                ? `${t("courtsList.available")}`
+                                : `${t("courtsList.taken")}`}
                             </h4>
-                            {/* <h3>
-                              {court.available ? "Available" : "Not Available"}
-                            </h3> */}
                             {statusClass === "likely-available" && (
                               <p>
-                                Last taken {timeSinceOccupied} minutes ago,
-                                might be available.
+                                {t("courtsList.lastTaken.likelyAvailable1")}{" "}
+                                {timeSinceOccupied}{" "}
+                                {t("courtsList.lastTaken.likelyAvailable2")}
                               </p>
                             )}
                             {statusClass === "taken" && (
                               <p>
-                                Currently occupied, taken {timeSinceOccupied}{" "}
-                                minutes ago.
+                                {t("courtsList.lastTaken.taken1")}{" "}
+                                {timeSinceOccupied}{" "}
+                                {t("courtsList.lastTaken.taken2")}
                               </p>
                             )}
                           </div>

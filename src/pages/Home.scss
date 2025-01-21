@@ -1,19 +1,33 @@
-.heroSection {
-  .ball {
-    width: 135px;
-    position: absolute;
-    left: -48px;
-    top: 68px;
-    z-index: -1;
-    opacity: 0.4;
+.homeComponentWrapper {
+  // background: green;
+
+  .heroSection {
+    .ball {
+      width: 135px;
+      position: absolute;
+      left: -48px;
+      top: 68px;
+      z-index: -1;
+      opacity: 0.4;
+    }
+
+    .racket {
+    }
+  }
+  .toggleButton {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5rem;
+    margin-top: 2rem;
   }
 
-  .racket {
+  footer {
+    // background: red;
+    display: flex;
+    justify-content: center;
+    // position: absolute;
+    // bottom: 0px;
+
+    margin: 3rem 1rem 1rem;
   }
-}
-.toggleButton {
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 5rem;
-  margin-top: 2rem;
 }

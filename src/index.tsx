@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
 import { AuthProvider } from "react-oidc-context";
+import "./i18n.tsx";
+
 const cognitoAuthConfig = {
   authority: process.env.REACT_APP_COGNITO_AUTH_CONFIG_AUTHORTITY,
   client_id: process.env.REACT_APP_COGNITO_AUTH_CONFIG_CLIENT_ID,
