@@ -7,6 +7,7 @@ import CourtCheckInPage from "./pages/CourtCheckInPage.tsx";
 import Home from "./pages/Home.tsx";
 import NavBar from "./Components/NavBar.tsx";
 import HowItWorks from "./pages/HowItWorks.tsx";
+import LanguageSwitch from "./Components/LanguageSwitch.tsx";
 
 function App() {
   const auth = useAuth();
@@ -30,6 +31,9 @@ function App() {
           <Route path="/instructiuni" element={<HowItWorks />} />
         </Routes>
       </Router>
+      <div className="footer">
+        <LanguageSwitch />
+      </div>
     </div>
   );
 }

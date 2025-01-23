@@ -39,7 +39,8 @@ const BasicMap = () => {
   }
 
   return (
-    <div style={{ height: "500px", width: "100%" }}>
+    // <div style={{ height: "500px", width: "100%" }}>
+    <div style={{ width: "100%" }}>
       <Map
         initialViewState={{
           longitude: 26.10249131839039,

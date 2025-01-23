@@ -9,39 +9,8 @@ import BasicMap from "../Components/BasicMap.tsx";
 import "./Home.scss";
 import ball from "../assets/ball.png";
 import { useTranslation } from "react-i18next";
-import { FormGroup, FormControlLabel } from "@mui/material";
-import Switch from "@mui/material/Switch";
-import { styled } from "@mui/material/styles";
 
 type Props = {};
-
-const MaterialUISwitch = styled(Switch)(({ theme }) => ({
-  width: 62,
-  height: 34,
-  padding: 7,
-  "& .MuiSwitch-switchBase": {
-    margin: 1,
-    padding: 0,
-    transform: "translateX(6px)",
-    "&.Mui-checked": {
-      color: "#fff",
-      transform: "translateX(22px)",
-      "& + .MuiSwitch-track": {
-        backgroundColor: "#4caf50",
-      },
-    },
-  },
-  "& .MuiSwitch-thumb": {
-    backgroundColor: "#001e3c",
-    width: 32,
-    height: 32,
-  },
-  "& .MuiSwitch-track": {
-    opacity: 1,
-    backgroundColor: "#aab4be",
-    borderRadius: 20 / 2,
-  },
-}));
 
 const Home = (props: Props) => {
   const auth = useAuth();
@@ -69,11 +38,6 @@ const Home = (props: Props) => {
     if (newView !== null) {
       setView(newView);
     }
-  };
-
-  const handleLanguageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newLang = event.target.checked ? "en" : "ro";
-    i18n.changeLanguage(newLang);
   };
 
   return (
@@ -109,31 +73,6 @@ const Home = (props: Props) => {
           {view === "courts" ? <CourtsList /> : <BasicMap />}
         </div>
       </main>
-      <footer>
-        <FormGroup>
-          <FormControlLabel
-            control={
-              <MaterialUISwitch
-                checked={i18n.language === "en"}
-                onChange={handleLanguageChange}
-                name="language-switch"
-                color="primary"
-              />
-            }
-            label={
-              i18n.language === "en" ? (
-                <span role="img" aria-label="english">
-                  English
-                </span>
-              ) : (
-                <span role="img" aria-label="romanian">
-                  Română
-                </span>
-              )
-            }
-          />
-        </FormGroup>
-      </footer>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -35,4 +36,10 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.footer {
+  bottom: 0px;
+  position: relative;
+  width: 100%;
 }
