@@ -1,66 +1,31 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "react-oidc-context"; // Import the auth hook
+import { useAuth } from "react-oidc-context";
 import "./NavBar.scss";
 import Avatar from "@mui/material/Avatar";
 import { green } from "@mui/material/colors";
 import logo from "../assets/logo.png";
 import Button from "@mui/material/Button";
 import { useTranslation } from "react-i18next";
-import { FormGroup, FormControlLabel } from "@mui/material"; // Import necessary MUI components
-import Switch from "@mui/material/Switch"; // Import MUI Switch component
-import { styled } from "@mui/material/styles";
-
-// MaterialUI Switch Styling
-const MaterialUISwitch = styled(Switch)(({ theme }) => ({
-  width: 62,
-  height: 34,
-  padding: 7,
-  "& .MuiSwitch-switchBase": {
-    margin: 1,
-    padding: 0,
-    transform: "translateX(6px)",
-    "&.Mui-checked": {
-      color: "#fff",
-      transform: "translateX(22px)",
-      "& + .MuiSwitch-track": {
-        backgroundColor: "#4caf50",
-      },
-    },
-  },
-  "& .MuiSwitch-thumb": {
-    backgroundColor: "#001e3c",
-    width: 32,
-    height: 32,
-  },
-  "& .MuiSwitch-track": {
-    opacity: 1,
-    backgroundColor: "#aab4be",
-    borderRadius: 20 / 2,
-  },
-}));
 
 type Props = {};
 
 const NavBar = (props: Props) => {
-  const auth = useAuth(); // Access the auth object
+  const auth = useAuth();
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const handleLogin = () => {
-    auth.signinRedirect(); // Redirect to login
+    auth.signinRedirect();
   };
 
-  const handleLogout = () => {
-    auth.signoutRedirect(); // Redirect to logout
-  };
-
-  const firstLetter = auth.user?.profile.email[0].toUpperCase();
+  const firstLetter =
+    auth?.user?.profile.email && auth.user.profile.email[0].toUpperCase();
 
   return (
     <div className="parentComponent">
       <div className="linksComponent">
-        <img src={logo} onClick={() => navigate("/")} />
+        <img src={logo} onClick={() => navigate("/")} alt="home-logo" />
       </div>
 
       <div>

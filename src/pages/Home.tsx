@@ -9,8 +9,8 @@ import BasicMap from "../Components/BasicMap.tsx";
 import "./Home.scss";
 import ball from "../assets/ball.png";
 import { useTranslation } from "react-i18next";
-import { FormGroup, FormControlLabel } from "@mui/material"; // Import necessary MUI components
-import Switch from "@mui/material/Switch"; // Import MUI Switch component
+import { FormGroup, FormControlLabel } from "@mui/material";
+import Switch from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
 
 type Props = {};
@@ -72,7 +72,7 @@ const Home = (props: Props) => {
   };
 
   const handleLanguageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newLang = event.target.checked ? "en" : "ro"; // Toggle between English and Romanian
+    const newLang = event.target.checked ? "en" : "ro";
     i18n.changeLanguage(newLang);
   };
 
@@ -81,7 +81,7 @@ const Home = (props: Props) => {
       <main>
         <div className="heroSection">
           <h1>{t("hero.title")}</h1>
-          <img src={ball} className="ball" />
+          <img src={ball} className="ball" alt="ball" />
           <Button
             variant="contained"
             color="success"

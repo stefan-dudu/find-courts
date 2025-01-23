@@ -3,12 +3,13 @@ import Map, { Marker, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useTranslation } from "react-i18next";
+import { CourtsType } from "../types/courts";
 
-const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN; // Replace with your token
+const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
 const BasicMap = () => {
-  const [courts, setCourts] = useState([]);
-  const [popupInfo, setPopupInfo] = useState(null);
+  const [courts, setCourts] = useState<CourtsType>([]);
+  const [popupInfo, setPopupInfo] = useState<CourtsType>();
   const [loading, setLoading] = useState<boolean>(true);
   const { t } = useTranslation();
 
@@ -20,7 +21,7 @@ const BasicMap = () => {
     try {
       const response = await fetch(process.env.REACT_APP_COURT_GET_LINK || "");
       const data = await response.json();
-      setCourts(data.body); // Adjusted to match your example response structure
+      setCourts(data.body);
     } catch (error) {
       console.error("Error fetching courts:", error);
     } finally {
@@ -59,12 +60,12 @@ const BasicMap = () => {
         {courts.length > 0 &&
           courts.map((court) => (
             <Marker
-              key={court.courtID}
+              key={court.locationID}
               longitude={court.coordinates[1]}
               latitude={court.coordinates[0]}
               anchor="bottom"
               onClick={(e) => {
-                e.originalEvent.stopPropagation(); // Prevent map click from triggering
+                e.originalEvent.stopPropagation();
                 setPopupInfo(court);
               }}
             ></Marker>

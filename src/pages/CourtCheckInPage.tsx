@@ -5,11 +5,12 @@ import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Alert, Snackbar } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import { CourtLocation } from "../types/courts";
 
 type Props = {};
 
 const CourtCheckInPage = (props: Props) => {
-  const [court, setCourt] = useState<any>(null);
+  const [court, setCourt] = useState<CourtLocation>();
   const [coordinates, setCoordinates] = useState<{
     lat: number;
     lng: number;
