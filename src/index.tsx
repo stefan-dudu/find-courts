@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import "./index.scss";
 import App from "./App.tsx";
 import { AuthProvider } from "react-oidc-context";
 import "./i18n.tsx";

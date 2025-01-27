@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import React from "react";
 import { useAuth } from "react-oidc-context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
