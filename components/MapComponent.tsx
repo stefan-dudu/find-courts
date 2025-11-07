@@ -11,7 +11,7 @@ const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
 const MapComponent = () => {
   const [courts, setCourts] = useState([]);
-  const [popupInfo, setPopupInfo] = useState(null);
+  const [popupInfo, setPopupInfo] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const { t } = useTranslation();
 
@@ -61,7 +61,7 @@ const MapComponent = () => {
         mapboxAccessToken={MAPBOX_TOKEN}
       >
         {courts.length > 0 &&
-          courts.map((court) => (
+          courts.map((court: any) => (
             <Marker
               key={court.courtID}
               longitude={court.coordinates[1]}

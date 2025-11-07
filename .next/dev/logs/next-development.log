@@ -65,3 +65,5 @@ https://react.dev/link/hydration-mismatch
 Check the render method of `div`.  It was passed a child from MapComponent.
 [00:06:32.588] Server  LOG      ✓ Compiled in 16ms
 [00:06:33.859] Server  LOG      ✓ Compiled in 13ms
+[00:08:27.629] Server  LOG      ✓ Compiled in 14ms
+[00:08:29.384] Server  LOG      ✓ Compiled in 14ms
