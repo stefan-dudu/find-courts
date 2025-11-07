@@ -248,7 +248,7 @@ const Court = ({ data }: any) => {
 
               {expandedLocation === location.locationID && (
                 <div className="mt-4 grid gap-3">
-                  {location.courts.map((court) => {
+                  {location.courts.map((court: any) => {
                     const statusClass = getCourtStatusClass(court);
                     const occupiedUntil = new Date(court.occupiedUntil);
                     const occupiedSince = new Date(occupiedUntil);
