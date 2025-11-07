@@ -5,6 +5,7 @@ import Map, { Marker, Popup } from "react-map-gl/mapbox";
 import "mapbox-gl/dist/mapbox-gl.css";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useTranslation } from "react-i18next";
+import { CourtLocation, CourtType } from "@/types/courts";
 
 const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN; 
 
@@ -61,9 +62,9 @@ const MapComponent = () => {
         mapboxAccessToken={MAPBOX_TOKEN}
       >
         {courts.length > 0 &&
-          courts.map((court: any) => (
+          courts.map((court: CourtLocation) => (
             <Marker
-              key={court.courtID}
+              key={court.locationID}
               longitude={court.coordinates[1]}
               latitude={court.coordinates[0]}
               anchor="bottom"

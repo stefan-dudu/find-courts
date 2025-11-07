@@ -1,5 +1,5 @@
 // court.types.ts
-export interface Court {
+export interface CourtType {
   available: boolean;
   name: string;
   occupiedUntil: string;
@@ -8,8 +8,8 @@ export interface Court {
   courtID: string;
 }
 
-export interface CourtLocation {
-  courts: Court[];
+export interface CourtLocation{
+  courts: CourtType[];
   googleMapsLink: string;
   locationID: string;
   address: string;

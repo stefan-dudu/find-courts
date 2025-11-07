@@ -33,10 +33,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         
-        <div className = "flex items-center justify-center space-x-3 pt-5">
-          {<LanguageSwitch />}
+        <div className = "flex items-center justify-center space-x-3 pt-5 gap-3">
           <Link href={"/"}> Home</Link>
           <Link href={"/map"}> Map</Link>
+          {<LanguageSwitch />}
         </div>
         {children}
       </body>

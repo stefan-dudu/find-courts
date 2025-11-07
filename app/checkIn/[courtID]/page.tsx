@@ -1,5 +1,6 @@
 import React from "react";
 import CheckInClient from "@/components/CheckInClient";
+import { CourtLocation, CourtType } from "@/types/courts";
 
 export default async function CourtCheckIn({
   params,
@@ -17,13 +18,13 @@ export default async function CourtCheckIn({
 
   // find the court by id (preserve original filtering logic)
   const filtered = (data?.body || [])
-    .map((location: any) => ({
+    .map((location: CourtLocation) => ({
       ...location,
       courts: location.courts.filter(
-        (c: any) => String(c.courtID) === String(courtID)
+        (c: CourtType) => String(c.courtID) === String(courtID)
       ),
     }))
-    .filter((l: any) => l.courts.length > 0);
+    .filter((l: CourtLocation) => l.courts.length > 0);
 
   const location = filtered[0] ?? null;
   const court = location?.courts?.[0] ?? null;

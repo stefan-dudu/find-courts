@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { CourtLocation, CourtType } from "@/types/courts";
 // import { useAuth } from "react-oidc-context"; // auth disabled for now
 import { useRouter } from "next/navigation";
 import Button from "@mui/material/Button";
@@ -8,26 +9,9 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { Alert, Snackbar } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-type CourtProp = {
-  courtID?: string | number;
-  available?: boolean;
-  lat?: number;
-  lon?: number;
-  occupiedUntil?: string;
-  [k: string]: any;
-};
-
-type LocationProp = {
-  locationID?: string;
-  courtName?: string;
-  googleMapsLink?: string;
-  courts?: CourtProp[];
-  [k: string]: any;
-};
-
 type Props = {
-  court: CourtProp;
-  location?: LocationProp | null;
+  court: CourtType;
+  location?: CourtLocation | null;
   courtID: string;
 };
 
@@ -47,7 +31,7 @@ export default function CheckInClient({ court, location, courtID }: Props) {
 
   // auth disabled for now
   // const auth = useAuth();
-  const auth: any = null;
+  const auth = null;
 
   const router = useRouter();
   const { t } = useTranslation();
@@ -108,6 +92,7 @@ export default function CheckInClient({ court, location, courtID }: Props) {
         Math.cos(toRadians(courtLat)) *
         Math.sin(dLon / 2) ** 2;
     const distance = 2 * 6371000 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    console.log(distance, radius)
     return distance <= radius;
   };
 
@@ -186,7 +171,7 @@ export default function CheckInClient({ court, location, courtID }: Props) {
     coordinates.lng,
     Number(location?.coordinates[0] || 0),
     Number(location?.coordinates[1] || 0),
-    50
+    100
   );
 
   //   console.log(coordinates);

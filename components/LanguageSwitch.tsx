@@ -56,7 +56,7 @@ const LanguageSwitch = (props: Props) => {
     <div className="langWrapper">
       <FormGroup>
         <FormControlLabel
-          sx={{ gap: 2 }}
+          sx={{ gap: 1 }}
           control={
             <IOSSwitch
               checked={i18n.language === "en"}

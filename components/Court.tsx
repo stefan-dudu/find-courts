@@ -1,5 +1,5 @@
 "use client";
-import { CourtsType } from "@/types/courts";
+import { CourtLocation, CourtType } from "@/types/courts";
 import React, { useState } from "react";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
@@ -7,7 +7,8 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Button from "@mui/material/Button";
 import { useTranslation } from "react-i18next";
 
-const Court = ({ data }: any) => {
+
+const Court = ({ data }: { data: CourtLocation[] }) => {
 //   console.log("Data in Court component:", data);
   let locations = data;
   //   locations =  [
@@ -136,7 +137,7 @@ const Court = ({ data }: any) => {
     setExpandedLocation((prev) => (prev === locationID ? null : locationID));
   };
 
-  const getCourtStatusClass = (court: any) => {
+  const getCourtStatusClass = (court: CourtType) => {
     const occupiedUntil2 = new Date(court.occupiedUntil);
     const occupiedSince = new Date(occupiedUntil2);
     occupiedSince.setHours(occupiedSince.getHours() - 1);
@@ -154,11 +155,11 @@ const Court = ({ data }: any) => {
   };
 
   return (
-    <div className="flex w-full flex-row flex-wrap justify-center">
-      <Grid container spacing={2}>
-        {locations.map((location: any) => {
+    <div className="flex w-full flex-row flex-wrap bg-red-100">
+      <Grid container spacing={2} className = "justify-center">
+        {locations.map((location: CourtLocation) => {
           const availableCourts = location.courts.filter(
-            (court: any) =>
+            (court: CourtType) =>
               court.available &&
               (new Date().getTime() - new Date(court.occupiedUntil).getTime()) /
                 3600000 >
@@ -168,7 +169,7 @@ const Court = ({ data }: any) => {
           const allFieldsAvailable = location.courts.length === availableCourts;
 
           const likelyAvailableCourts = location.courts.filter(
-            (court: any) =>
+            (court: CourtType) =>
               court.available &&
               (new Date().getTime() - new Date(court.occupiedUntil).getTime()) /
                 3600000 >
@@ -179,7 +180,7 @@ const Court = ({ data }: any) => {
           ).length;
 
           const takenCourts = location.courts.filter(
-            (court: any) => !court.available
+            (court: CourtType) => !court.available
           ).length;
 
           return (
@@ -193,14 +194,13 @@ const Court = ({ data }: any) => {
                     {location.courtName}
                   </h3>
                   {location.googleMapsLink && (
-                    <Link href={location.googleMapsLink}>
-                      <a
-                        className="text-sm text-blue-600 hover:underline"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {t ? t("courtsList.viewOnMaps") : "View on Maps"}
-                      </a>
+                    <Link
+                      href={location.googleMapsLink}
+                      className="text-sm text-blue-600 hover:underline"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {t ? t("courtsList.viewOnMaps") : "View on Maps"}
                     </Link>
                   )}
                 </div>
@@ -248,7 +248,7 @@ const Court = ({ data }: any) => {
 
               {expandedLocation === location.locationID && (
                 <div className="mt-4 grid gap-3">
-                  {location.courts.map((court: any) => {
+                  {location.courts.map((court: CourtType) => {
                     const statusClass = getCourtStatusClass(court);
                     const occupiedUntil = new Date(court.occupiedUntil);
                     const occupiedSince = new Date(occupiedUntil);
