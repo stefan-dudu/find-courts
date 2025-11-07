@@ -1,0 +1,51 @@
+{
+  "loading": {
+    "courtInfo": "Loading court information...",
+    "mapInfo": "Loading map information...",
+    "loading": "Loading...",
+    "error": "There was an error..."
+  },
+  "navBar": { "login": "Login", "welcome": "Welcome" },
+  "hero": {
+    "title": "Find out which public tennis courts are available",
+    "howItWorks": "How does it work?"
+  },
+  "switch": { "courts": "courts", "map": "map" },
+  "courtsList": {
+    "viewOnMaps": "View on Google Maps",
+    "showCourts": "Show courts",
+    "hideCourts": "Hide Courts",
+    "available": "Available",
+    "taken": "Taken",
+    "likelyAvailable": "Likely Available",
+    "lastTaken": {
+      "likelyAvailable1": "Last taken ",
+      "likelyAvailable2": "minutes ago, might be available.",
+      "taken1": "Currently occupied, taken",
+      "taken2": "minutes ago."
+    }
+  },
+  "map": {
+    "noOfCourts": "No of courts:"
+  },
+  "checkInPage": {
+    "success": "Check-in successful!",
+    "error": "An error occurred during check-in.",
+    "locationError": "Geolocation is not supported by your browser.",
+    "errorGettingLocation": "Error getting location:",
+    "informCourtNo": "You are about to check in on court",
+    "courtTaken": "Sorry, court already taken",
+    "distanceError": "Please get closer to the tennis field - within 50m",
+    "confirmationAndRedirect": "Thank you for checking in! Redirecting to home...",
+    "checkInButton": "Check-in",
+    "back": "Back"
+  },
+  "howItWorks": {
+    "title": "How does it work?",
+    "p1": "This site works based on user check-ins.",
+    "p2": "Check-ins can be done by scanning the QR code available on the tennis court. To avoid certain inconveniences, check-ins can only be made if you are near the court.",
+    "p3": "When someone checks in at the court, other players will know that the court is already occupied.",
+    "p4": "Thus, the site helps manage court availability and avoids confusion among those who want to play.",
+    "p5": "If a user does not check in, the site will show that the court is free, even if it is not. Therefore, it is important to check in before playing so that others know the court is occupied."
+  }
+}

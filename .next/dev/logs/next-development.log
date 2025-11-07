@@ -1,0 +1,69 @@
+[00:00:01.670] Server  LOG      ✓ Ready in 1518ms
+[00:00:05.138] Server  ERROR    ⨯ TypeError: Failed to parse URL from 
+[00:00:05.361] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:06.279] Browser ERROR   uncaughtError: TypeError: Failed to parse URL from 
+[00:00:10.857] Server  ERROR    ⨯ TypeError: Failed to parse URL from 
+[00:00:10.939] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:11.076] Browser ERROR   uncaughtError: TypeError: Failed to parse URL from 
+[00:00:20.736] Server  LOG        Reload env: .env
+[00:00:20.968] Server  LOG      ✓ Compiled in 192ms
+[00:00:22.248] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:22.415] Browser ERROR   In HTML, %s cannot be a descendant of <%s>.
+This will cause a hydration error.%s <a> a 
+
+  ...
+    <SegmentViewNode type="page" pagePath="page.tsx">
+      <SegmentTrieNode>
+      <Home>
+        <div className={"flex min..."}>
+          ...
+            <div className="flex w-ful...">
+              <Grid container={true} spacing={2}>
+                <MuiGrid-root ref={null} as="div" ownerState={{container:true, ...}} className="MuiGrid-ro..." sx={{}}>
+                  <Insertion>
+                  <div className="MuiGrid-ro...">
+                    <div className="w-[320px] ...">
+                      <div className="flex items...">
+                        <div className="text-left">
+                          <h3>
+                          <Link href="https://ma...">
+                            <MuiLink-root color="primary" className="MuiLink-ro..." classes={undefined} component="a" ...>
+                              <Insertion>
+                              <Typography color="primary" className="MuiLink-ro..." component="a" ...>
+                                <MuiTypography-root as="a" ref={null} className="MuiTypogra..." ...>
+                                  <Insertion>
+>                                 <a
+>                                   className="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underline..."
+>                                   onBlur={function handleBlur}
+>                                   onFocus={function handleFocus}
+>                                   href="https://maps.app.goo.gl/C8g62sqJgnEQduAK8"
+>                                   style={{}}
+>                                 >
+>                                   <a
+>                                     className="text-sm text-blue-600 hover:underline"
+>                                     target="_blank"
+>                                     rel="noreferrer"
+>                                   >
+                        ...
+                    ...
+
+[00:00:22.415] Browser ERROR   <%s> cannot contain a nested %s.
+See this log for the ancestor stack trace. a <a>
+[00:00:22.415] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+[00:00:27.105] Browser ERROR   Each child in a list should have a unique "key" prop.%s%s See https://react.dev/link/warning-keys for more information. 
+
+Check the render method of `div`.  It was passed a child from MapComponent.
+[00:06:32.588] Server  LOG      ✓ Compiled in 16ms
+[00:06:33.859] Server  LOG      ✓ Compiled in 13ms
+[00:08:27.629] Server  LOG      ✓ Compiled in 14ms
+[00:08:29.384] Server  LOG      ✓ Compiled in 14ms
