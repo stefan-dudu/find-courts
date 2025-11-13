@@ -5,6 +5,8 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useTranslation } from "react-i18next";
 import { CourtLocation, CourtType } from "@/types/courts";
+import { useTheme } from "next-themes";
+
 
 const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
@@ -12,10 +14,15 @@ const MapComponent = () => {
   const [courts, setCourts] = useState([]);
   const [popupInfo, setPopupInfo] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const [mapStyle, setMapStyle] = useState<string>("")
   const { t } = useTranslation();
+  const { theme, systemTheme } = useTheme();
 
   useEffect(() => {
     fetchCourts();
+    const currentTheme = theme === "system" ? systemTheme : theme;
+    console.log("currentTheme", currentTheme)
+    currentTheme === "dark" ? setMapStyle("mapbox://styles/stefan01-dev/cmhvtbqtw00fv01qu4tkreear") : setMapStyle("mapbox://styles/stefan01-dev/cm657r5k900c401sgbcuofev4")
   }, []);
 
   const fetchCourts = async () => {
@@ -70,7 +77,7 @@ const MapComponent = () => {
         }}
         // mapStyle="mapbox://styles/mapbox/outdoors-v12"
         // mapStyle="mapbox://styles/stefan01-dev/cm657r5k900c401sgbcuofev4"
-        mapStyle="mapbox://styles/stefan01-dev/cmhvtbqtw00fv01qu4tkreear"
+        mapStyle = {mapStyle}
         mapboxAccessToken={MAPBOX_TOKEN}
       >
         {courts.length > 0 &&

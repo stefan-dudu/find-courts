@@ -112,7 +112,7 @@ const Court = ({ data }: { data: CourtLocation[] }) => {
                     <div className="flex flex-col items-end gap-2">
                       <div className="flex flex-col items-end gap-1">
                         {availableCourts > 0 && (
-                          <span className="text-green-100 font-semibold text-sm">
+                          <span className="text-green-600 dark:text-green-100 font-semibold text-sm">
                             {availableCourts}{" "}
                             {t ? t("courtsList.available") : "available"}
                           </span>

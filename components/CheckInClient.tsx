@@ -192,7 +192,7 @@ export default function CheckInClient({ court, location, courtID }: Props) {
         withinRadius ? (
           court?.available ? (
             <div className="flex flex-col items-center gap-6">
-              <h2 className="text-lg font-semibold text-gray-50">
+              <h2 className="text-lg font-semibold dark:text-gray-100 text-gray-800">
                 {t ? t("checkInPage.informCourtNo") : "Checking in to court"}{" "}
                 {courtID}
               </h2>

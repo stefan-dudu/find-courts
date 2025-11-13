@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 import I18nInit from "@/components/I18nInit";
+import { ThemeProvider } from "next-themes";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,15 +28,15 @@ export default function RootLayout({
   const navigation = [
     { name: "Acasa", href: "/" },
     { name: "Harta", href: "/map" },
-    { name: "About", href: "/about" },
+    { name: "Afla mai multe", href: "/about" },
   ];
 
   return (
-    <html lang="ro">
+    <html lang="ro" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="flex items-center justify-center space-x-3 pt-5 pb-5 gap-10">
+        <div className="flex items-center justify-center space-x-3 pt-5 pb-5 gap-7">
           {navigation.map((item) => (
             <a
               key={item.name}
@@ -47,7 +48,9 @@ export default function RootLayout({
           ))}
         </div>
         <I18nInit />
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
