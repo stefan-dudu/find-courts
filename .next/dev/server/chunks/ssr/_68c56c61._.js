@@ -159,211 +159,269 @@ const Court = ({ data })=>{
         }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "flex w-full flex-row flex-wrap justify-center",
-        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Grid$2f$Grid$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-            container: true,
-            spacing: 2,
-            children: locations.map((location)=>{
-                const availableCourts = location.courts.filter((court)=>court.available && (new Date().getTime() - new Date(court.occupiedUntil).getTime()) / 3600000 > 1).length;
-                const allFieldsAvailable = location.courts.length === availableCourts;
-                const likelyAvailableCourts = location.courts.filter((court)=>court.available && (new Date().getTime() - new Date(court.occupiedUntil).getTime()) / 3600000 > 0.1 && (new Date().getTime() - new Date(court.occupiedUntil).getTime()) / 3600000 < 1).length;
-                const takenCourts = location.courts.filter((court)=>!court.available).length;
-                return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "w-[320px] sm:w-[420px] bg-white rounded-xl p-5 m-5 shadow-2xl text-center",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex items-center justify-between gap-4",
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "relative isolate px-6 pt-14 lg:px-8 ",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "mx-auto max-w-2xl py-10 sm:py-10 lg:py-6",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "text-center",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                                className: "text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl dark:text-white",
+                                children: t("hero.title")
+                            }, void 0, false, {
+                                fileName: "[project]/components/Court.tsx",
+                                lineNumber: 173,
+                                columnNumber: 13
+                            }, ("TURBOPACK compile-time value", void 0)),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8 dark:text-gray-400",
+                                children: t("hero.subTitle")
+                            }, void 0, false, {
+                                fileName: "[project]/components/Court.tsx",
+                                lineNumber: 176,
+                                columnNumber: 13
+                            }, ("TURBOPACK compile-time value", void 0)),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "mt-10 flex items-center justify-center gap-x-6",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                    href: "/about",
+                                    className: "rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:focus-visible:outline-indigo-500",
+                                    children: "Get started"
+                                }, void 0, false, {
+                                    fileName: "[project]/components/Court.tsx",
+                                    lineNumber: 180,
+                                    columnNumber: 15
+                                }, ("TURBOPACK compile-time value", void 0))
+                            }, void 0, false, {
+                                fileName: "[project]/components/Court.tsx",
+                                lineNumber: 179,
+                                columnNumber: 13
+                            }, ("TURBOPACK compile-time value", void 0))
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/components/Court.tsx",
+                        lineNumber: 172,
+                        columnNumber: 11
+                    }, ("TURBOPACK compile-time value", void 0))
+                }, void 0, false, {
+                    fileName: "[project]/components/Court.tsx",
+                    lineNumber: 159,
+                    columnNumber: 9
+                }, ("TURBOPACK compile-time value", void 0))
+            }, void 0, false, {
+                fileName: "[project]/components/Court.tsx",
+                lineNumber: 158,
+                columnNumber: 7
+            }, ("TURBOPACK compile-time value", void 0)),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "flex w-full flex-row flex-wrap",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Grid$2f$Grid$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                    container: true,
+                    spacing: 2,
+                    className: "justify-center",
+                    children: locations.map((location)=>{
+                        const availableCourts = location.courts.filter((court)=>court.available && (new Date().getTime() - new Date(court.occupiedUntil).getTime()) / 3600000 > 1).length;
+                        const allFieldsAvailable = location.courts.length === availableCourts;
+                        const likelyAvailableCourts = location.courts.filter((court)=>court.available && (new Date().getTime() - new Date(court.occupiedUntil).getTime()) / 3600000 > 0.1 && (new Date().getTime() - new Date(court.occupiedUntil).getTime()) / 3600000 < 1).length;
+                        const takenCourts = location.courts.filter((court)=>!court.available).length;
+                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "w-[320px] sm:w-[420px] bg-white dark:bg-gray-800 rounded-xl p-5 m-5 shadow-2xl text-center ",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "text-left",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                            className: "text-lg font-semibold",
-                                            children: location.courtName
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/Court.tsx",
-                                            lineNumber: 192,
-                                            columnNumber: 19
-                                        }, ("TURBOPACK compile-time value", void 0)),
-                                        location.googleMapsLink && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Link$2f$Link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                                            href: location.googleMapsLink,
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                                className: "text-sm text-blue-600 hover:underline",
-                                                target: "_blank",
-                                                rel: "noreferrer",
-                                                children: t ? t("courtsList.viewOnMaps") : "View on Maps"
-                                            }, void 0, false, {
-                                                fileName: "[project]/components/Court.tsx",
-                                                lineNumber: 197,
-                                                columnNumber: 23
-                                            }, ("TURBOPACK compile-time value", void 0))
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/Court.tsx",
-                                            lineNumber: 196,
-                                            columnNumber: 21
-                                        }, ("TURBOPACK compile-time value", void 0))
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/components/Court.tsx",
-                                    lineNumber: 191,
-                                    columnNumber: 17
-                                }, ("TURBOPACK compile-time value", void 0)),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "flex flex-col items-end gap-2",
+                                    className: "flex items-center justify-between gap-4",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "flex flex-col items-end gap-1",
+                                            className: "text-left flex flex-col items-center justify-between gap-4",
                                             children: [
-                                                availableCourts > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: "text-green-600 font-semibold text-sm",
-                                                    children: [
-                                                        availableCourts,
-                                                        " ",
-                                                        t ? t("courtsList.available") : "available"
-                                                    ]
-                                                }, void 0, true, {
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                    className: "text-gray-900 dark:text-white text-lg font-semibold",
+                                                    children: location.courtName
+                                                }, void 0, false, {
                                                     fileName: "[project]/components/Court.tsx",
-                                                    lineNumber: 211,
-                                                    columnNumber: 23
+                                                    lineNumber: 248,
+                                                    columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0)),
-                                                likelyAvailableCourts > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: "text-amber-600 font-semibold text-sm",
-                                                    children: [
-                                                        likelyAvailableCourts,
-                                                        " ",
-                                                        t ? t("courtsList.likelyAvailable") : "likely available"
-                                                    ]
-                                                }, void 0, true, {
+                                                location.googleMapsLink && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Link$2f$Link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                                    href: location.googleMapsLink,
+                                                    className: "text-gray-500 dark:text-gray-400",
+                                                    target: "_blank",
+                                                    rel: "noreferrer",
+                                                    children: t ? t("courtsList.viewOnMaps") : "View on Maps"
+                                                }, void 0, false, {
                                                     fileName: "[project]/components/Court.tsx",
-                                                    lineNumber: 217,
-                                                    columnNumber: 23
-                                                }, ("TURBOPACK compile-time value", void 0)),
-                                                takenCourts > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: "text-rose-600 font-semibold text-sm",
-                                                    children: [
-                                                        takenCourts,
-                                                        " ",
-                                                        t ? t("courtsList.taken") : "taken"
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/components/Court.tsx",
-                                                    lineNumber: 225,
+                                                    lineNumber: 252,
                                                     columnNumber: 23
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/Court.tsx",
-                                            lineNumber: 209,
+                                            lineNumber: 247,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0)),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                            onClick: ()=>toggleLocation(location.locationID),
-                                            //   onClick={() => console.log(location.locationID)}
-                                            className: "mt-2 text-sm px-3 py-1 rounded border border-green-600 text-green-700 hover:bg-green-50",
-                                            children: expandedLocation === location.locationID ? t ? t("courtsList.hideCourts") : "Hide courts" : t ? t("courtsList.showCourts") : "Show courts"
-                                        }, void 0, false, {
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "flex flex-col items-end gap-2",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "flex flex-col items-end gap-1",
+                                                    children: [
+                                                        availableCourts > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            className: "text-green-100 font-semibold text-sm",
+                                                            children: [
+                                                                availableCourts,
+                                                                " ",
+                                                                t ? t("courtsList.available") : "available"
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/components/Court.tsx",
+                                                            lineNumber: 266,
+                                                            columnNumber: 25
+                                                        }, ("TURBOPACK compile-time value", void 0)),
+                                                        likelyAvailableCourts > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            className: "text-amber-600 font-semibold text-sm",
+                                                            children: [
+                                                                likelyAvailableCourts,
+                                                                " ",
+                                                                t ? t("courtsList.likelyAvailable") : "likely available"
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/components/Court.tsx",
+                                                            lineNumber: 272,
+                                                            columnNumber: 25
+                                                        }, ("TURBOPACK compile-time value", void 0)),
+                                                        takenCourts > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            className: "text-rose-600 font-semibold text-sm",
+                                                            children: [
+                                                                takenCourts,
+                                                                " ",
+                                                                t ? t("courtsList.taken") : "taken"
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/components/Court.tsx",
+                                                            lineNumber: 280,
+                                                            columnNumber: 25
+                                                        }, ("TURBOPACK compile-time value", void 0))
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/components/Court.tsx",
+                                                    lineNumber: 264,
+                                                    columnNumber: 21
+                                                }, ("TURBOPACK compile-time value", void 0)),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                    onClick: ()=>toggleLocation(location.locationID),
+                                                    //   onClick={() => console.log(location.locationID)}
+                                                    className: "mt-2 text-sm px-3 py-1 rounded border border-green-600 text-green-700 hover:bg-green-50",
+                                                    children: expandedLocation === location.locationID ? t ? t("courtsList.hideCourts") : "Hide courts" : t ? t("courtsList.showCourts") : "Show courts"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/components/Court.tsx",
+                                                    lineNumber: 287,
+                                                    columnNumber: 23
+                                                }, ("TURBOPACK compile-time value", void 0))
+                                            ]
+                                        }, void 0, true, {
                                             fileName: "[project]/components/Court.tsx",
-                                            lineNumber: 232,
-                                            columnNumber: 21
+                                            lineNumber: 263,
+                                            columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Court.tsx",
-                                    lineNumber: 208,
+                                    lineNumber: 246,
                                     columnNumber: 17
+                                }, ("TURBOPACK compile-time value", void 0)),
+                                expandedLocation === location.locationID && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "mt-4 grid gap-3",
+                                    children: location.courts.map((court)=>{
+                                        const statusClass = getCourtStatusClass(court);
+                                        const occupiedUntil = new Date(court.occupiedUntil);
+                                        const occupiedSince = new Date(occupiedUntil);
+                                        occupiedSince.setHours(occupiedSince.getHours() - 1);
+                                        const timeSinceOccupied = Math.round((new Date().getTime() - occupiedSince.getTime()) / 60000);
+                                        const statusStyles = statusClass === "available" ? "bg-green-800 border-l-4 border-green-500" : statusClass === "likely-available" ? "bg-amber-800 border-l-4 border-amber-500" : "bg-rose-800 border-l-4 border-rose-500";
+                                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: `flex items-start p-3 rounded-md ${statusStyles}`,
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "text-left",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                        className: "text-sm font-medium mb-1 text-gray-100",
+                                                        children: [
+                                                            "#",
+                                                            court.courtID,
+                                                            " -",
+                                                            " ",
+                                                            court.available ? t ? t("courtsList.available") : "Available" : t ? t("courtsList.taken") : "Taken"
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/components/Court.tsx",
+                                                        lineNumber: 328,
+                                                        columnNumber: 29
+                                                    }, ("TURBOPACK compile-time value", void 0)),
+                                                    statusClass === "likely-available" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "text-xs text-gray-200",
+                                                        children: [
+                                                            t ? t("courtsList.lastTaken.likelyAvailable1") : "Last taken about",
+                                                            " ",
+                                                            timeSinceOccupied,
+                                                            " ",
+                                                            t ? t("courtsList.lastTaken.likelyAvailable2") : "minutes ago."
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/components/Court.tsx",
+                                                        lineNumber: 340,
+                                                        columnNumber: 31
+                                                    }, ("TURBOPACK compile-time value", void 0)),
+                                                    statusClass === "taken" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "text-xs text-gray-200",
+                                                        children: [
+                                                            t ? t("courtsList.lastTaken.taken1") : "Taken for",
+                                                            " ",
+                                                            timeSinceOccupied,
+                                                            " ",
+                                                            t ? t("courtsList.lastTaken.taken2") : "minutes."
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/components/Court.tsx",
+                                                        lineNumber: 352,
+                                                        columnNumber: 31
+                                                    }, ("TURBOPACK compile-time value", void 0))
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/components/Court.tsx",
+                                                lineNumber: 327,
+                                                columnNumber: 27
+                                            }, ("TURBOPACK compile-time value", void 0))
+                                        }, court.courtID, false, {
+                                            fileName: "[project]/components/Court.tsx",
+                                            lineNumber: 323,
+                                            columnNumber: 25
+                                        }, ("TURBOPACK compile-time value", void 0));
+                                    })
+                                }, void 0, false, {
+                                    fileName: "[project]/components/Court.tsx",
+                                    lineNumber: 305,
+                                    columnNumber: 19
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
-                        }, void 0, true, {
+                        }, location.locationID, true, {
                             fileName: "[project]/components/Court.tsx",
-                            lineNumber: 190,
+                            lineNumber: 242,
                             columnNumber: 15
-                        }, ("TURBOPACK compile-time value", void 0)),
-                        expandedLocation === location.locationID && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "mt-4 grid gap-3",
-                            children: location.courts.map((court)=>{
-                                const statusClass = getCourtStatusClass(court);
-                                const occupiedUntil = new Date(court.occupiedUntil);
-                                const occupiedSince = new Date(occupiedUntil);
-                                occupiedSince.setHours(occupiedSince.getHours() - 1);
-                                const timeSinceOccupied = Math.round((new Date().getTime() - occupiedSince.getTime()) / 60000);
-                                const statusStyles = statusClass === "available" ? "bg-green-100 border-l-4 border-green-500" : statusClass === "likely-available" ? "bg-amber-100 border-l-4 border-amber-500" : "bg-rose-100 border-l-4 border-rose-500";
-                                return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: `flex items-start p-3 rounded-md ${statusStyles}`,
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "text-left",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                                className: "text-sm font-medium mb-1",
-                                                children: [
-                                                    "#",
-                                                    court.courtID,
-                                                    " -",
-                                                    " ",
-                                                    court.available ? t ? t("courtsList.available") : "Available" : t ? t("courtsList.taken") : "Taken"
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/components/Court.tsx",
-                                                lineNumber: 273,
-                                                columnNumber: 27
-                                            }, ("TURBOPACK compile-time value", void 0)),
-                                            statusClass === "likely-available" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-xs text-gray-600",
-                                                children: [
-                                                    t ? t("courtsList.lastTaken.likelyAvailable1") : "Last taken about",
-                                                    " ",
-                                                    timeSinceOccupied,
-                                                    " ",
-                                                    t ? t("courtsList.lastTaken.likelyAvailable2") : "minutes ago."
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/components/Court.tsx",
-                                                lineNumber: 285,
-                                                columnNumber: 29
-                                            }, ("TURBOPACK compile-time value", void 0)),
-                                            statusClass === "taken" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-xs text-gray-600",
-                                                children: [
-                                                    t ? t("courtsList.lastTaken.taken1") : "Taken for",
-                                                    " ",
-                                                    timeSinceOccupied,
-                                                    " ",
-                                                    t ? t("courtsList.lastTaken.taken2") : "minutes."
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/components/Court.tsx",
-                                                lineNumber: 297,
-                                                columnNumber: 29
-                                            }, ("TURBOPACK compile-time value", void 0))
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/components/Court.tsx",
-                                        lineNumber: 272,
-                                        columnNumber: 25
-                                    }, ("TURBOPACK compile-time value", void 0))
-                                }, court.courtID, false, {
-                                    fileName: "[project]/components/Court.tsx",
-                                    lineNumber: 268,
-                                    columnNumber: 23
-                                }, ("TURBOPACK compile-time value", void 0));
-                            })
-                        }, void 0, false, {
-                            fileName: "[project]/components/Court.tsx",
-                            lineNumber: 250,
-                            columnNumber: 17
-                        }, ("TURBOPACK compile-time value", void 0))
-                    ]
-                }, location.locationID, true, {
+                        }, ("TURBOPACK compile-time value", void 0));
+                    })
+                }, void 0, false, {
                     fileName: "[project]/components/Court.tsx",
-                    lineNumber: 186,
-                    columnNumber: 13
-                }, ("TURBOPACK compile-time value", void 0));
-            })
-        }, void 0, false, {
-            fileName: "[project]/components/Court.tsx",
-            lineNumber: 158,
-            columnNumber: 7
-        }, ("TURBOPACK compile-time value", void 0))
-    }, void 0, false, {
+                    lineNumber: 210,
+                    columnNumber: 9
+                }, ("TURBOPACK compile-time value", void 0))
+            }, void 0, false, {
+                fileName: "[project]/components/Court.tsx",
+                lineNumber: 209,
+                columnNumber: 7
+            }, ("TURBOPACK compile-time value", void 0))
+        ]
+    }, void 0, true, {
         fileName: "[project]/components/Court.tsx",
         lineNumber: 157,
         columnNumber: 5

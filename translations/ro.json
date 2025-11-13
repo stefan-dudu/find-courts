@@ -7,7 +7,8 @@
   },
   "navBar": { "login": "Login", "welcome": "Hey " },
   "hero": {
-    "title": "Află ce terenuri publice de tenis sunt disponibile chiar acum!",
+    "title": "Află în timp real ce terenuri sunt disponibile",
+    "subTitle": "Aplicația care arată starea terenurilor publice de tenis — liber sau ocupat, actualizat de jucători ca tine.",
     "howItWorks": "Cum functioneaza?"
   },
   "switch": { "courts": "terenuri", "map": "harta" },
@@ -42,10 +43,12 @@
   },
   "howItWorks": {
     "title": "Cum functioneaza?",
-    "p1": "Acest site funcționează pe baza check-in-urilor utilizatorilor.",
-    "p2": "Check-in-ul se poate face prin scanarea codului QR disponibil pe terenul de tenis. Pentru a evita anumite neplaceri, check-in-ul se poate face doar daca te afli in proximitatea terenului.",
-    "p3": "Când cineva face check-in pe teren, ceilalți jucători vor ști că terenul este deja ocupat.",
-    "p4": "Astfel, site-ul ajută la gestionarea disponibilității terenurilor și la evitarea confuziilor între cei care vor să joace.",
-    "p5": "Dacă un utilizator nu face check-in, site-ul va arăta că terenul este liber, chiar dacă nu este. Așadar, este important să faci check-in înainte de a juca, pentru ca ceilalți să știe că terenul este ocupat."
+    "subtitle": "Fiecare check-in ajută alți jucători să găsească un teren liber și să iasă la joc.",
+    "step1Title": "Verifică starea terenurilor",
+    "step1Subtitle": "Descopera rapid unde poți juca fără să te deplasezi inutil. Datele se actualizează în timp real, bazate pe check-in-urile celorlalti jucatori.",
+    "step2Title": "Faci check-in la teren",
+    "step2Subtitle": "Când ajungi pe teren, scanează codul afișat pentru a te înregistra. În felul acesta, îi ajuți pe ceilalți jucători să știe că terenul este ocupat — simplu, rapid și corect.",
+    "step3Title": "Joacă și contribuie",
+    "step3Subtitle": "După terminarea orei, terenul revine automat la starea „liber”, pentru ca și alți jucători să-l poată folosi."
   }
 }

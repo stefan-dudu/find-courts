@@ -9,7 +9,7 @@ export default async function Home() {
   // console.log("posts json:", res.body);
 
   return (
-    <div className="flex min-h-screen items-center justify-center">
+    <div className="flex min-h-screen items-center justify-center bg-white dark:bg-gray-900">
       <main>
         <Court data={res.body} />
       </main>

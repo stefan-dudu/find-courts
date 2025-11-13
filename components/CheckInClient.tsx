@@ -36,7 +36,6 @@ export default function CheckInClient({ court, location, courtID }: Props) {
   const router = useRouter();
   const { t } = useTranslation();
 
-
   useEffect(() => {
     getCoordinates();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -47,7 +46,7 @@ export default function CheckInClient({ court, location, courtID }: Props) {
   };
 
   const getCoordinates = () => {
-    console.log("Does this wokr? - getCoordinates");
+    // console.log("Does this wokr? - getCoordinates");
     if (!navigator?.geolocation) {
       setError(
         t ? t("checkInPage.locationError") : "Geolocation not supported"
@@ -92,7 +91,7 @@ export default function CheckInClient({ court, location, courtID }: Props) {
         Math.cos(toRadians(courtLat)) *
         Math.sin(dLon / 2) ** 2;
     const distance = 2 * 6371000 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    console.log(distance, radius)
+    console.log(distance, radius);
     return distance <= radius;
   };
 
@@ -118,7 +117,6 @@ export default function CheckInClient({ court, location, courtID }: Props) {
           },
         }
       );
-
 
       if (resp.ok) {
         setAlertMessage(
@@ -178,11 +176,23 @@ export default function CheckInClient({ court, location, courtID }: Props) {
 
   return (
     <div className="max-w-xl mx-auto p-4">
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+      >
+        <div
+          style={{
+            clipPath:
+              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+          }}
+          className="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-288.75"
+        />
+      </div>
       {!checkedIn ? (
         withinRadius ? (
           court?.available ? (
-            <div className="space-y-4">
-              <h2 className="text-lg font-semibold">
+            <div className="flex flex-col items-center gap-6">
+              <h2 className="text-lg font-semibold text-gray-50">
                 {t ? t("checkInPage.informCourtNo") : "Checking in to court"}{" "}
                 {courtID}
               </h2>
@@ -202,26 +212,7 @@ export default function CheckInClient({ court, location, courtID }: Props) {
                     "Check in"
                   )}
                 </Button>
-
-                {/* <Button
-                  variant="outlined"
-                  onClick={() => router.back()}
-                  disabled={loading}
-                >
-                  {t ? t("checkInPage.back") : "Back"}
-                </Button> */}
               </div>
-
-              {/* {location?.googleMapsLink && (
-                <a
-                  href={location.googleMapsLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-sm text-blue-600 hover:underline block mt-2"
-                >
-                  {t ? t("courtsList.viewOnMaps") : "View on Maps"}
-                </a>
-              )} */}
             </div>
           ) : (
             <h2 className="text-center">
@@ -259,6 +250,18 @@ export default function CheckInClient({ court, location, courtID }: Props) {
           {alertMessage}
         </Alert>
       </Snackbar>
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+      >
+        <div
+          style={{
+            clipPath:
+              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+          }}
+          className="relative left-[calc(50%+3rem)] aspect-1155/678 w-144.5 -translate-x-1/2 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-288.75"
+        />
+      </div>
     </div>
   );
 }

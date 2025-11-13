@@ -8,6 +8,7 @@
   "navBar": { "login": "Login", "welcome": "Welcome" },
   "hero": {
     "title": "Find out which public tennis courts are available",
+    "subTitle": "The app that shows the status of the public tennis courts - free or taken, updated by players just like you.",
     "howItWorks": "How does it work?"
   },
   "switch": { "courts": "courts", "map": "map" },
