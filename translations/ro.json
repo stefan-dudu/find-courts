@@ -37,6 +37,7 @@
     "informCourtNo": "Urmeaza sa faceti check-in pe terenul numarul",
     "courtTaken": "Imi pare rau, terenul este deja ocupat.",
     "distanceError": "Va rog sa fiti mai aproape de teren.",
+    "waitingForLocation": "Se aseapta locatia utilizatorului", 
     "confirmationAndRedirect": "Multumim pentru check-in! Redirectionare catre acasa...",
     "checkInButton": "Valideaza",
     "back": "Inapoi"

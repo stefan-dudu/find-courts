@@ -93,7 +93,7 @@ const Court = ({ data }: { data: CourtLocation[] }) => {
                   className="w-[320px] sm:w-[420px] bg-white dark:bg-gray-800 rounded-xl p-5 m-5 shadow-2xl text-center"
                 >
                   <div className="flex items-center justify-between gap-4">
-                    <div className="text-left flex flex-col items-center justify-between gap-4">
+                    <div className="text-left flex flex-col items-start items-center justify-between gap-4">
                       <h3 className="text-gray-900 dark:text-white text-lg font-semibold">
                         {location.courtName}
                       </h3>
@@ -112,7 +112,7 @@ const Court = ({ data }: { data: CourtLocation[] }) => {
                     <div className="flex flex-col items-end gap-2">
                       <div className="flex flex-col items-end gap-1">
                         {availableCourts > 0 && (
-                          <span className="text-green-600 dark:text-green-100 font-semibold text-sm">
+                          <span className="text-green-600 dark:text-green-500 font-semibold text-sm">
                             {availableCourts}{" "}
                             {t ? t("courtsList.available") : "available"}
                           </span>

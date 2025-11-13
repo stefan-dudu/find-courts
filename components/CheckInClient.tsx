@@ -63,7 +63,7 @@ export default function CheckInClient({ court, location, courtID }: Props) {
       (err) => {
         setError(
           t
-            ? `${t("checkInPage.errorGettingLocation")} ${err.message}`
+            ? `${t("checkInPage.errorGettingLocation")} Permiteti aplicatiei sa acceseze pozitia dumneavoastra!`
             : `Error getting location: ${err.message}`
         );
       },
