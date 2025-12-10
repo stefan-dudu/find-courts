@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Find Courts",
+  title: "Find Courts - Descopera terenuri de tenis",
   description: "Descopera terenuri publice de tenis",
 };
 

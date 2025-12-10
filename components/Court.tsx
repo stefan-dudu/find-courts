@@ -98,14 +98,17 @@ const Court = ({ data }: { data: CourtLocation[] }) => {
                         {location.courtName}
                       </h3>
                       {location.googleMapsLink && (
-                        <Link
-                          href={location.googleMapsLink}
-                          className="text-gray-500 dark:text-gray-400"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          {t ? t("courtsList.viewOnMaps") : "View on Maps"}
-                        </Link>
+                        <div className="hidden sm:flex sm:justify-center">
+                          <div className="relative rounded-full px-3 py-1 text-sm/6 text-gray-400 ring-1 dark:ring-gray-200/10 dark:hover:ring-gray-200/20 ring-gray-900/10 hover:ring-gray-900/20">
+                            <a
+                              href={location.googleMapsLink}
+                              className="text-indigo-500 text-sm/8 dark:text-indigo-300"
+                              target="_blank"
+                            >
+                              {t ? t("courtsList.viewOnMaps") : "View on Maps"}
+                            </a>
+                          </div>
+                        </div>
                       )}
                     </div>
 
@@ -150,9 +153,9 @@ const Court = ({ data }: { data: CourtLocation[] }) => {
                   {/* Animated expand/collapse wrapper (always rendered) */}
                   <div
                     // Tailwind: transition on max-height and opacity; arbitrary max-h value for expanded state
-                    className={`overflow-hidden transition-all duration-700 ease-in-out mt-4 ${
+                    className={`overflow-hidden transition-all duration-700 ease-in-out  ${
                       expandedLocation === location.locationID
-                        ? "max-h-[1000px] opacity-100"
+                        ? "max-h-[1000px] opacity-100 mt-4"
                         : "max-h-0 opacity-0"
                     }`}
                   >
